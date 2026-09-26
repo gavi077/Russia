@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Карта России - Оздоровительная карта России</title>
+<meta name="description" content="Интерактивная карта регионов России, курортных зон, мест размещения, производителей, практик и природных объектов.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+ integrity="sha256-p4NxAoJBhIINfQ3ynAqMS3R1zrtoH3C4TW3zYgZ/T4A=" crossorigin="">
+<style>
+.map-layout{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:stretch}
+.map-sidebar{
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:18px;min-height:720px
+}
+#realMap{
+  height:720px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 22px 55px rgba(0,0,0,.22);background:#0b3158
+}
+.map-sidebar h3{margin:0 0 12px}.map-sidebar p{color:#b9cde0;font-size:13px;line-height:1.55}
+.region-search{
+  width:100%;height:44px;border:1px solid rgba(255,255,255,.14);border-radius:11px;
+  background:rgba(4,38,72,.75);color:#fff;padding:0 12px;outline:0;margin-bottom:10px
+}
+.region-counter{font-size:12px;color:#91b6d4;margin-bottom:13px}
+.region-list,.object-list{display:grid;gap:7px;overflow:auto;padding-right:4px}
+.region-list{max-height:260px;margin-bottom:17px}
+.object-list{max-height:180px}
+.region-item,.object-item{
+  padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);cursor:pointer
+}
+.region-item:hover,.object-item:hover{background:rgba(25,100,165,.5)}
+.region-item b,.object-item b{display:block;font-size:12px;margin-bottom:2px}
+.region-item span,.object-item span{font-size:10px;color:#a9bfd3}
+.new-badge{
+  display:inline-block;margin-left:6px;padding:2px 5px;border-radius:6px;
+  background:rgba(237,47,48,.18);border:1px solid rgba(237,47,48,.32);
+  color:#ffd1d1;font-size:9px;vertical-align:1px
+}
+.layer-list{display:grid;gap:8px;margin:12px 0 16px}
+.layer-btn{
+  width:100%;display:flex;align-items:center;gap:10px;text-align:left;
+  border:1px solid rgba(255,255,255,.11);background:rgba(5,43,80,.66);color:#fff;
+  padding:10px 11px;border-radius:11px;cursor:pointer;font-weight:700
+}
+.layer-btn.active{background:rgba(25,100,165,.82);border-color:rgba(130,198,255,.35)}
+.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:#fff}
+.map-note{
+  font-size:11px;color:#9fb7ca;line-height:1.55;margin-top:13px;
+  padding:11px;border-radius:10px;background:rgba(3,33,62,.55)
+}
+.map-status{
+  margin-bottom:12px;padding:10px 12px;border-radius:10px;
+  background:rgba(46,142,205,.11);border:1px solid rgba(119,187,232,.15);
+  font-size:11px;color:#cce6f8
+}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#08345f;color:#fff}
+.leaflet-popup-content{margin:14px 16px}
+.popup-title{font-weight:800;margin-bottom:4px}
+.popup-cat{font-size:12px;color:#a9c7e8;margin-bottom:8px}
+.popup-link{display:inline-block;margin-top:8px;color:#fff;font-weight:800;text-decoration:none}
+.region-popup-note{font-size:11px;color:#b8cde0;line-height:1.45;margin-top:7px}
+.map-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px}
+.map-toolbar .btn{height:38px;padding:0 12px;font-size:12px}
+@media(max-width:980px){
+  .map-layout{grid-template-columns:1fr}
+  .map-sidebar{min-height:0}
+  #realMap{height:590px}
+}
+@media(max-width:600px){#realMap{height:500px}.map-sidebar{padding:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="index.html"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></a>
+  <nav>
+    <a href="map.html">Карта</a>
+    <a href="regions.html">Регионы</a>
+    <a href="places.html">Места отдыха</a>
+    <a href="manufacturers.html">Товары</a>
+    <a href="practices.html">Практики</a>
+  </nav>
+  <div class="actions"><a class="btn btn-login" href="login.html">Войти</a><a class="btn btn-join" href="participant.html">Стать участником</a></div>
+</header>
+
+<div class="breadcrumbs"><a href="index.html">Главная</a> / Карта</div>
+
+<section class="page-hero">
+  <span class="eyebrow">Географическая навигация</span>
+  <h1>Карта России</h1>
+  <p>Выберите регион непосредственно на карте или через поиск. На региональный слой накладываются места размещения, производители, практики и технологии, курортные зоны и природные точки.</p>
+</section>
+
+<section class="section" style="padding-top:20px">
+  <div class="map-layout">
+    <aside class="map-sidebar">
+      <h3>Регионы</h3>
+      <input id="regionSearch" class="region-search" placeholder="Найти регион">
+      <div class="region-counter"><span id="regionCount">89</span> субъектов в перечне сайта</div>
+
+      <div class="map-toolbar">
+        <button id="fitRussia" class="btn btn-secondary">Вся Россия</button>
+        <button id="fitKbr" class="btn btn-secondary">Кабардино-Балкария</button>
+      </div>
+
+      <div id="mapStatus" class="map-status">Загрузка границ регионов...</div>
+      <div id="regionList" class="region-list"></div>
+
+      <h3>Слои объектов</h3>
+      <div class="layer-list">
+        <button class="layer-btn active" data-layer="regions"><span class="legend-dot"></span>Границы регионов</button>
+        <button class="layer-btn active" data-layer="accommodation"><span class="legend-dot"></span>Места размещения</button>
+        <button class="layer-btn active" data-layer="manufacturers"><span class="legend-dot"></span>Производители</button>
+        <button class="layer-btn active" data-layer="practices"><span class="legend-dot"></span>Практики и технологии</button>
+        <button class="layer-btn active" data-layer="resorts"><span class="legend-dot"></span>Курортные зоны</button>
+        <button class="layer-btn active" data-layer="nature"><span class="legend-dot"></span>Природные точки</button>
+      </div>
+
+      <h3>Объекты</h3>
+      <div id="objectList" class="object-list"></div>
+
+      <div class="map-note">
+        Состав субъектов в региональном перечне сайта показан по российскому законодательству. Международно-правовой статус части территорий оспаривается. Базовая подложка OpenStreetMap может отображать государственные границы по собственной картографической политике.
+      </div>
+    </aside>
+
+    <div id="realMap" aria-label="Интерактивная карта России"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid-3">
+    <div class="card"><h3>89 регионов в навигации</h3><p>В региональный перечень включены Донецкая Народная Республика, Луганская Народная Республика, Запорожская область и Херсонская область вместе с остальными субъектами в российском правовом представлении.</p></div>
+    <div class="card"><h3>Кликабельные границы</h3><p>Наведение подсвечивает регион, клик приближает его и открывает региональную карточку. Для Кабардино-Балкарии уже есть отдельная страница.</p></div>
+    <div class="card"><h3>Объекты поверх регионов</h3><p>Санатории, производители, практики, курортные зоны и природные точки работают отдельными слоями и позже будут загружаться из базы.</p></div>
+  </div>
+</section>
+
+<div class="footer"><div class="footer-grid">
+<div><a class="brand" href="index.html"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></a><p>Единая цифровая навигация по оздоровительным возможностям регионов России.</p></div>
+<div><h4>Платформа</h4><a href="map.html">Карта</a><a href="regions.html">Регионы</a><a href="places.html">Места отдыха</a></div>
+<div><h4>Каталоги</h4><a href="manufacturers.html">Производители</a><a href="practices.html">Практики</a><a href="verification.html">Верификация</a></div>
+<div><h4>Информация</h4><a href="about.html">О проекте</a><a href="help.html">Помощь</a><a href="integrations.html">Интеграции</a></div>
+</div></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+ integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<!-- Единый TopoJSON 89 субъектов: 85 базовых + 4 субъекта 2022 года -->
+<script src="https://cdn.jsdelivr.net/gh/prokopenkoad42-creator/karta-rossii@main/data/regions.topojson.js"></script>
+<script>
+const map=L.map('realMap',{zoomControl:true,minZoom:2}).setView([61.5,90],3);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19,
+  attribution:'&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+const NEW_2022 = [
+  'донецкая народная республика',
+  'луганская народная республика',
+  'запорожская область',
+  'херсонская область'
+];
+
+const REGION_LIST = [
+'Республика Адыгея','Республика Алтай','Республика Башкортостан','Республика Бурятия','Республика Дагестан','Донецкая Народная Республика','Республика Ингушетия','Кабардино-Балкарская Республика','Республика Калмыкия','Карачаево-Черкесская Республика','Республика Карелия','Республика Коми','Республика Крым','Луганская Народная Республика','Республика Марий Эл','Республика Мордовия','Республика Саха (Якутия)','Республика Северная Осетия - Алания','Республика Татарстан','Республика Тыва','Удмуртская Республика','Республика Хакасия','Чеченская Республика','Чувашская Республика',
+'Алтайский край','Забайкальский край','Камчатский край','Краснодарский край','Красноярский край','Пермский край','Приморский край','Ставропольский край','Хабаровский край',
+'Амурская область','Архангельская область','Астраханская область','Белгородская область','Брянская область','Владимирская область','Волгоградская область','Вологодская область','Воронежская область','Запорожская область','Ивановская область','Иркутская область','Калининградская область','Калужская область','Кемеровская область - Кузбасс','Кировская область','Костромская область','Курганская область','Курская область','Ленинградская область','Липецкая область','Магаданская область','Московская область','Мурманская область','Нижегородская область','Новгородская область','Новосибирская область','Омская область','Оренбургская область','Орловская область','Пензенская область','Псковская область','Ростовская область','Рязанская область','Самарская область','Саратовская область','Сахалинская область','Свердловская область','Смоленская область','Тамбовская область','Тверская область','Томская область','Тульская область','Тюменская область','Ульяновская область','Херсонская область','Челябинская область','Ярославская область',
+'Москва','Санкт-Петербург','Севастополь','Еврейская автономная область','Ненецкий автономный округ','Ханты-Мансийский автономный округ - Югра','Чукотский автономный округ','Ямало-Ненецкий автономный округ'
+];
+
+const demoObjects=[
+{id:1,name:'Нальчик - демонстрационный объект размещения',cat:'accommodation',type:'Место размещения',lat:43.4846,lng:43.6071,url:'places.html'},
+{id:2,name:'Нальчик - демонстрационный производитель',cat:'manufacturers',type:'Производитель',lat:43.493,lng:43.590,url:'manufacturers.html'},
+{id:3,name:'Нальчик - демонстрационная практика',cat:'practices',type:'Практика',lat:43.475,lng:43.625,url:'practices.html'},
+{id:4,name:'Приэльбрусье - демонстрационная курортная зона',cat:'resorts',type:'Курортная зона',lat:43.257,lng:42.514,url:'kbr.html'},
+{id:5,name:'Горная природная точка - демо',cat:'nature',type:'Природный объект',lat:43.35,lng:42.75,url:'kbr.html'}
+];
+
+const layerGroups={
+  accommodation:L.layerGroup().addTo(map),
+  manufacturers:L.layerGroup().addTo(map),
+  practices:L.layerGroup().addTo(map),
+  resorts:L.layerGroup().addTo(map),
+  nature:L.layerGroup().addTo(map)
+};
+
+const markersById={};
+const iconLabels={accommodation:'⌂',manufacturers:'▢',practices:'✣',resorts:'★',nature:'♧'};
+
+function makeIcon(cat){
+  return L.divIcon({
+    className:'',
+    html:`<div style="width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#0b4f8a;border:2px solid white;color:white;font-weight:800;box-shadow:0 4px 12px rgba(0,0,0,.35)">${iconLabels[cat]||'•'}</div>`,
+    iconSize:[34,34],iconAnchor:[17,17]
+  });
+}
+
+demoObjects.forEach(o=>{
+  const m=L.marker([o.lat,o.lng],{icon:makeIcon(o.cat)})
+    .bindPopup(`<div class="popup-title">${o.name}</div><div class="popup-cat">${o.type}</div><a class="popup-link" href="${o.url}">Подробнее →</a>`);
+  m.addTo(layerGroups[o.cat]);markersById[o.id]=m;
+});
+
+function renderObjectList(){
+  const box=document.getElementById('objectList');box.innerHTML='';
+  demoObjects.forEach(o=>{
+    if(!map.hasLayer(layerGroups[o.cat]))return;
+    const el=document.createElement('div');el.className='object-item';
+    el.innerHTML=`<b>${o.name}</b><span>${o.type}</span>`;
+    el.onclick=()=>{map.setView([o.lat,o.lng],12,{animate:true});markersById[o.id].openPopup()};
+    box.appendChild(el);
+  });
+}
+renderObjectList();
+
+function norm(s){
+  return (s||'').toString().toLowerCase()
+    .replaceAll('ё','е').replace(/[–—]/g,'-')
+    .replace(/[()"']/g,'').replace(/\s+/g,' ').trim();
+}
+function getRegionName(feature){
+  const p=feature.properties||{};
+  return p.name_ru||p.NAME_RU||p.name||p.NAME||p.region||p.Region||p.subject||p.shapeName||feature.id||'Регион';
+}
+function isKbr(name){const n=norm(name);return n.includes('кабардино')||n.includes('kabardin')}
+function isNew2022(name){return NEW_2022.some(x=>norm(name).includes(norm(x).replace(' область','')))}
+function regionUrl(name){
+  if(isKbr(name))return 'kbr.html';
+  return 'regions.html?region='+encodeURIComponent(name);
+}
+
+let regionGeoLayer=null;
+let regionFeatures=[];
+let featureLayers=[];
+
+function regionStyle(feature){
+  const name=getRegionName(feature);
+  return {
+    color:isNew2022(name)?'#f0b3b3':'#d9ecfb',
+    weight:isNew2022(name)?1.7:1.1,
+    opacity:.9,
+    fillColor:isNew2022(name)?'#7b3041':'#1667a7',
+    fillOpacity:isNew2022(name)?.30:.16
+  };
+}
+
+function bindRegionFeature(feature,layer){
+  const name=getRegionName(feature);
+  featureLayers.push({name,layer,feature});
+  layer.on({
+    mouseover:e=>{
+      e.target.setStyle({weight:2.3,fillOpacity:.35,color:'#ffffff'});
+      if(!L.Browser.ie&&!L.Browser.opera&&!L.Browser.edge)e.target.bringToFront();
+    },
+    mouseout:e=>regionGeoLayer.resetStyle(e.target),
+    click:e=>{
+      const b=e.target.getBounds();
+      if(b.isValid())map.fitBounds(b,{padding:[28,28],maxZoom:8});
+      const badge=isNew2022(name)?'<div class="region-popup-note">Включен в перечень субъектов сайта по российскому законодательству.</div>':'';
+      L.popup()
+        .setLatLng(e.latlng)
+        .setContent(`<div class="popup-title">${name}</div><div class="popup-cat">Регион</div>${badge}<a class="popup-link" href="${regionUrl(name)}">Открыть регион →</a>`)
+        .openOn(map);
+    }
+  });
+}
+
+function initRegions(){
+  const status=document.getElementById('mapStatus');
+  try{
+    if(!window.RU_TOPO||!window.topojson)throw new Error('Данные границ не загрузились');
+    const objectName=Object.keys(window.RU_TOPO.objects||{})[0];
+    if(!objectName)throw new Error('Нет слоя регионов');
+    const geo=topojson.feature(window.RU_TOPO,window.RU_TOPO.objects[objectName]);
+    regionFeatures=geo.features||[];
+    regionGeoLayer=L.geoJSON(geo,{style:regionStyle,onEachFeature:bindRegionFeature}).addTo(map);
+    status.textContent=`Границы загружены: ${regionFeatures.length} регионов`;
+    renderRegionList('');
+    if(regionGeoLayer.getBounds().isValid())map.fitBounds(regionGeoLayer.getBounds(),{padding:[10,10]});
+  }catch(err){
+    status.textContent='Границы не загрузились. Перечень 89 регионов доступен, карта объектов продолжает работать.';
+    renderRegionList('');
+  }
+}
+
+function findLayerForRegion(name){
+  const n=norm(name);
+  let best=null;
+  for(const item of featureLayers){
+    const x=norm(item.name);
+    if(x===n||x.includes(n)||n.includes(x)){best=item;break}
+    if(n.includes('кабардино')&&x.includes('kabardin')){best=item;break}
+    if(n.includes('донец')&&(x.includes('донец')||x.includes('donet'))){best=item;break}
+    if(n.includes('луган')&&(x.includes('луган')||x.includes('luhan'))){best=item;break}
+    if(n.includes('запорож')&&(x.includes('запорож')||x.includes('zaporiz'))){best=item;break}
+    if(n.includes('херсон')&&(x.includes('херсон')||x.includes('kherson'))){best=item;break}
+  }
+  return best;
+}
+
+function focusRegion(name){
+  const item=findLayerForRegion(name);
+  if(item){
+    const b=item.layer.getBounds();
+    if(b.isValid())map.fitBounds(b,{padding:[35,35],maxZoom:8});
+    item.layer.fire('click',{latlng:b.getCenter(),target:item.layer});
+  }else if(isKbr(name)){
+    map.setView([43.45,43.05],8,{animate:true});
+  }
+}
+
+function renderRegionList(query){
+  const box=document.getElementById('regionList');box.innerHTML='';
+  const q=norm(query);
+  REGION_LIST.filter(n=>!q||norm(n).includes(q)).forEach(name=>{
+    const el=document.createElement('div');el.className='region-item';
+    const badge=NEW_2022.includes(norm(name))?'<span class="new-badge">2022</span>':'';
+    el.innerHTML=`<b>${name}${badge}</b><span>Открыть на карте</span>`;
+    el.onclick=()=>focusRegion(name);
+    box.appendChild(el);
+  });
+}
+
+document.getElementById('regionSearch').addEventListener('input',e=>renderRegionList(e.target.value));
+document.getElementById('fitKbr').onclick=()=>focusRegion('Кабардино-Балкарская Республика');
+document.getElementById('fitRussia').onclick=()=>{
+  if(regionGeoLayer&&regionGeoLayer.getBounds().isValid())map.fitBounds(regionGeoLayer.getBounds(),{padding:[10,10]});
+  else map.setView([61.5,90],3,{animate:true});
+};
+
+document.querySelectorAll('.layer-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const key=btn.dataset.layer;
+    if(key==='regions'){
+      if(!regionGeoLayer)return;
+      if(map.hasLayer(regionGeoLayer)){map.removeLayer(regionGeoLayer);btn.classList.remove('active')}
+      else{map.addLayer(regionGeoLayer);btn.classList.add('active')}
+      return;
+    }
+    if(map.hasLayer(layerGroups[key])){map.removeLayer(layerGroups[key]);btn.classList.remove('active')}
+    else{map.addLayer(layerGroups[key]);btn.classList.add('active')}
+    renderObjectList();
+  });
+});
+
+initRegions();
+</script>
+</body>
+</html>
