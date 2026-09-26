@@ -106,3 +106,10 @@ textarea.form-control{min-height:110px;resize:vertical}
   .grid-4,.grid-3,.grid-2,.stats,.filterbar,.form-grid,.footer-grid{grid-template-columns:1fr}
   .list-card{grid-template-columns:1fr}.field.full{grid-column:auto}
 }
+
+.back-nav-btn{
+  margin-top:18px;height:38px;padding:0 14px;border-radius:10px;cursor:pointer;
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-weight:700;font-size:13px
+}
+.back-nav-btn:hover{background:rgba(255,255,255,.09)}

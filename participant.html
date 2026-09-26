@@ -26,7 +26,7 @@
 <section class="section"><div class="section-head"><div><span class="eyebrow">Заявка</span><h2>Начать регистрацию участника</h2><p class="section-lead">Это демонстрационная форма. В рабочей версии данные будут сохраняться в личном кабинете и передаваться на модерацию.</p></div></div>
 <form id="joinForm" class="card"><div class="form-grid">
 <div class="field"><label>Тип участника</label><select class="form-control"><option>Место размещения</option><option>Производитель</option><option>Автор практики / организация</option></select></div>
-<div class="field"><label>Регион</label><input class="form-control" placeholder="Регион"></div>
+<div class="field"><label>Регион</label><input class="form-control" placeholder="Регион" data-region-autocomplete></div>
 <div class="field"><label>Название</label><input class="form-control" placeholder="Название организации"></div>
 <div class="field"><label>E-mail</label><input class="form-control" type="email" placeholder="name@example.ru"></div>
 <div class="field full"><label>Кратко о деятельности</label><textarea class="form-control" placeholder="Опишите деятельность"></textarea></div>
@@ -40,4 +40,4 @@
     <div><h4>Участникам</h4><a href="participant.html">Стать участником</a><a href="verification.html">Верификация</a><a href="participant-account.html">Кабинет участника</a><a href="regional-operator.html">Региональным операторам</a></div>
     <div><h4>Информация</h4><a href="about.html">О проекте</a><a href="integrations.html">Интеграции</a><a href="help.html">Помощь</a><a href="privacy.html">Персональные данные</a></div>
   </div>
-</div></div><script src="site.js"></script><script>fakeSubmit("joinForm","Заявка принята в демонстрационном режиме. В рабочей версии она появится в личном кабинете участника.");</script></body></html>
+</div></div><script src="site.js"></script><script>fakeSubmit("joinForm","Заявка принята в демонстрационном режиме. В рабочей версии она появится в личном кабинете участника.");</script><script src="regions-autocomplete.js"></script></body></html>
