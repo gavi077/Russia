@@ -5,70 +5,201 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Оздоровительная карта России</title>
 <style>
-:root{--navy:#05264b;--navy2:#08396d;--red:#e5322f;--green:#35b276;--text:#fff;--muted:#c9d8e8}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:#fff;background:radial-gradient(circle at 70% 18%,rgba(47,113,181,.28),transparent 34%),linear-gradient(145deg,#042348 0%,#073766 52%,#03192f 100%);overflow-x:hidden}
-.wrap{max-width:1440px;margin:auto;padding:0 28px}header{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
-.brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:18px}.mark{width:46px;height:46px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center;font-size:22px}nav{display:flex;gap:26px;font-size:14px}nav a{color:#eaf3fb;text-decoration:none}.actions{display:flex;gap:12px}.btn{padding:13px 20px;border-radius:12px;font-weight:700;border:1px solid rgba(255,255,255,.55);background:transparent;color:#fff}.btn.red{background:var(--red);border-color:var(--red)}
-.hero{position:relative;min-height:690px;display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:center;padding:58px 0 118px}.copy{z-index:3}h1{font-family:Georgia,serif;font-size:68px;line-height:.98;font-weight:500;margin:0 0 18px;max-width:680px}.subtitle{font-size:24px;color:#dce8f2;margin-bottom:28px}.search{display:flex;background:#fff;border-radius:16px;overflow:hidden;max-width:650px;box-shadow:0 18px 50px rgba(0,0,0,.18)}.search input{flex:1;border:0;outline:0;padding:18px 20px;font-size:16px;color:#294764}.search button{width:86px;border:0;background:#0b3e72;color:#fff;font-size:25px}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:700px;margin-top:22px}.quick a{text-decoration:none;color:#fff;min-height:112px;border:1px solid rgba(255,255,255,.2);background:linear-gradient(180deg,rgba(25,74,119,.72),rgba(6,42,77,.75));border-radius:16px;padding:18px 14px;display:flex;flex-direction:column;justify-content:center;backdrop-filter:blur(10px)}.quick .i{font-size:27px;margin-bottom:10px}.quick b{font-size:14px;line-height:1.25}
-.visual{position:relative;min-height:545px}.mapstage{position:absolute;inset:28px 0 0}.mapglow{position:absolute;inset:45px 10px 25px;background:radial-gradient(circle at 55% 45%,rgba(55,151,255,.34),transparent 55%);filter:blur(20px)}.rmap{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 16px 26px rgba(0,0,0,.24))}.outline{fill:url(#photoPattern);stroke:#fff;stroke-width:4}.inner{fill:none;stroke:rgba(255,255,255,.32);stroke-width:1.1}.slogan{position:absolute;right:-8px;top:142px;width:210px;padding-left:18px;border-left:3px solid var(--red);font-size:19px;line-height:1.55;letter-spacing:.07em}.slogan small{display:block;width:116px;height:5px;margin-top:18px;border-radius:3px;background:linear-gradient(90deg,#fff 0 33%,#1d65c1 33% 66%,#e63232 66%)}.caption{position:absolute;left:24px;bottom:14px;background:rgba(4,29,55,.72);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 14px;font-size:12px;color:#dce9f3}.dots{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);border:0}.dot.on{background:#fff;width:24px;border-radius:8px}
-.flag{position:absolute;left:-5vw;right:-5vw;bottom:34px;height:155px;pointer-events:none}.flag svg{width:100%;height:100%;filter:drop-shadow(0 16px 24px rgba(0,0,0,.2))}
-.pillars{margin-top:-42px;background:rgba(3,27,52,.9);border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:repeat(4,1fr);backdrop-filter:blur(14px)}.pillar{padding:26px;display:flex;gap:18px;border-right:1px solid rgba(255,255,255,.11)}.pillar:last-child{border-right:0}.pillar .i{font-size:31px}.pillar b{display:block;font-size:15px;letter-spacing:.08em}.pillar span{font-size:12px;color:#a9bfd2}
-.section{padding:72px 0}.section h2{font-family:Georgia,serif;font-size:42px;font-weight:500;margin:0 0 15px}.section p{color:#b9cce0;max-width:780px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px;min-height:180px}footer{border-top:1px solid rgba(255,255,255,.1);padding:28px 0 45px;color:#9fb5c9;font-size:13px}
-@media(max-width:1050px){nav{display:none}.hero{grid-template-columns:1fr}.visual{min-height:470px}h1{font-size:54px}.quick{grid-template-columns:repeat(2,1fr)}.pillars{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}}
-@media(max-width:650px){.wrap{padding:0 18px}header{height:76px}.brand{font-size:14px}.mark{width:38px;height:38px}.actions .btn:first-child{display:none}.btn{padding:11px 14px;font-size:12px}h1{font-size:42px}.subtitle{font-size:18px}.visual{min-height:360px}.mapstage{height:330px}.slogan{font-size:13px;width:150px;top:110px}.quick{grid-template-columns:1fr 1fr}.pillars{grid-template-columns:1fr}.pillar{border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}}
+:root{
+  --navy:#062d59; --navy2:#07427d; --navy3:#0b5ba2;
+  --text:#fff; --muted:#d6e4f0; --red:#ed2f30; --blue:#1764c7;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#052a52;color:#fff}
+body{
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 56% 32%, rgba(17,104,190,.34), transparent 32%),
+    radial-gradient(circle at 89% 10%, rgba(4,76,151,.26), transparent 28%),
+    linear-gradient(132deg,#04264b 0%,#063a72 48%,#052951 100%);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;opacity:.25;pointer-events:none;
+  background:
+    repeating-radial-gradient(ellipse at 75% 40%,transparent 0 24px,rgba(135,194,240,.12) 25px 26px,transparent 27px 38px);
+  mask-image:linear-gradient(to left,black 0 50%,transparent 85%);
+}
+.wrap{max-width:1460px;margin:auto;padding:0 34px}
+header{
+  height:88px;display:grid;grid-template-columns:300px 1fr auto;align-items:center;gap:28px;
+  position:relative;z-index:20;
+}
+.brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:17px;line-height:1.08}
+.emblem{
+  width:54px;height:54px;border:2px solid rgba(255,255,255,.86);border-radius:50%;
+  display:grid;place-items:center;font-family:Georgia,serif;font-size:26px;
+  box-shadow:0 0 24px rgba(114,186,255,.14) inset;
+}
+nav{display:flex;justify-content:center;gap:34px;font-size:14px}
+nav a{color:#fff;text-decoration:none;opacity:.92}
+.actions{display:flex;gap:14px;align-items:center}
+.search-icon{font-size:28px;opacity:.95}
+.btn{height:48px;padding:0 25px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer}
+.btn-login{background:rgba(0,0,0,.08);border:1px solid rgba(255,255,255,.58);color:#fff}
+.btn-join{background:var(--red);border:0;color:#fff;box-shadow:0 10px 25px rgba(237,47,48,.18)}
+.hero{
+  position:relative;min-height:670px;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;
+  padding:34px 0 96px;
+}
+.copy{position:relative;z-index:5;padding-left:56px}
+h1{
+  font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:70px;line-height:.98;
+  margin:0 0 18px;letter-spacing:-.025em;
+}
+.subtitle{font-size:23px;color:#e8f0f7;margin-bottom:28px}
+.search{
+  width:min(600px,100%);height:58px;background:white;border-radius:15px;display:flex;overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.16);margin-bottom:22px
+}
+.search input{flex:1;border:0;outline:0;padding:0 22px;font-size:16px;color:#4a6b89}
+.search button{width:84px;border:0;background:#063c72;color:#fff;font-size:29px;cursor:pointer}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(650px,100%)}
+.q{
+  min-height:112px;border-radius:14px;border:1px solid rgba(255,255,255,.26);
+  background:linear-gradient(180deg,rgba(36,93,146,.7),rgba(10,50,91,.72));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;
+  font-weight:700;font-size:14px;color:#fff;text-decoration:none;backdrop-filter:blur(10px);
+  transition:.2s transform,.2s background
+}
+.q:hover{transform:translateY(-3px);background:rgba(26,90,145,.92)}
+.q .ico{font-size:29px;margin-bottom:9px;font-weight:400}
+
+.visual{position:relative;height:520px;z-index:4}
+.map-wrap{
+  position:absolute;left:1%;right:8%;top:24px;bottom:12px;
+  filter:drop-shadow(0 20px 30px rgba(0,0,0,.17));
+}
+.map-photo{
+  position:absolute;inset:0;
+  background-image:url("assets/nature-1.jpg");
+  background-size:cover;background-position:center;
+  -webkit-mask:url("assets/russia-mask.png") center/contain no-repeat;
+  mask:url("assets/russia-mask.png") center/contain no-repeat;
+  transition:background-image .7s ease, filter .5s ease;
+  filter:saturate(1.08) contrast(1.03);
+}
+.map-photo:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 36%,rgba(2,35,70,.18));
+}
+.map-outline{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.slogan{
+  position:absolute;right:-2px;top:160px;width:205px;border-left:2px solid #ff3a38;padding-left:17px;
+  font-size:18px;line-height:1.62;letter-spacing:.09em;text-shadow:0 2px 12px rgba(0,0,0,.22)
+}
+.slogan .mini{margin-top:13px;width:110px;height:5px;border-radius:3px;background:linear-gradient(90deg,#fff 0 33%,#2166c8 33% 66%,#ed2f30 66%)}
+.dots{position:absolute;left:45%;bottom:10px;display:flex;gap:8px;z-index:8}
+.dot{width:8px;height:8px;border-radius:50%;border:0;background:rgba(255,255,255,.42);padding:0;cursor:pointer}
+.dot.active{width:24px;border-radius:8px;background:#fff}
+
+/* High-quality tricolor ribbon: independent SVG asset, not a page screenshot. */
+.flag{
+  position:absolute;left:-7vw;right:-7vw;bottom:4px;height:190px;z-index:3;pointer-events:none;
+  filter:drop-shadow(0 18px 26px rgba(0,0,0,.22));
+}
+.flag svg{width:100%;height:100%;overflow:visible}
+.pillars{
+  margin-top:-46px;position:relative;z-index:10;background:linear-gradient(180deg,rgba(4,32,61,.93),rgba(4,38,72,.93));
+  border-top:1px solid rgba(255,255,255,.13);display:grid;grid-template-columns:repeat(4,1fr);
+  backdrop-filter:blur(14px)
+}
+.pillar{min-height:126px;padding:27px 30px;display:flex;gap:20px;align-items:center;border-right:1px solid rgba(255,255,255,.14)}
+.pillar:last-child{border-right:0}.pico{font-size:37px;opacity:.96}
+.pillar b{display:block;font-size:14px;line-height:1.45;letter-spacing:.08em}.pillar span{font-size:12px;color:#a8bfd3}
+.section{padding:74px 0}.section h2{font-family:Georgia,serif;font-size:42px;font-weight:500;margin:0 0 15px}
+.section p{color:#b9cde0;max-width:800px}
+@media(max-width:1100px){
+  header{grid-template-columns:1fr auto}nav{display:none}.hero{grid-template-columns:1fr;padding-top:20px}.copy{padding-left:0}
+  .visual{height:440px}.map-wrap{left:4%;right:5%}.slogan{right:0;top:130px}
+  .pillars{grid-template-columns:repeat(2,1fr)}h1{font-size:57px}
+}
+@media(max-width:680px){
+  .wrap{padding:0 18px}.brand{font-size:14px}.emblem{width:42px;height:42px}
+  .btn-login,.search-icon{display:none}.btn-join{padding:0 14px}.hero{min-height:auto;padding-bottom:110px}
+  h1{font-size:42px}.subtitle{font-size:18px}.quick{grid-template-columns:1fr 1fr}
+  .visual{height:330px;margin-top:18px}.map-wrap{left:0;right:0;top:0}.slogan{font-size:12px;width:135px;top:95px}
+  .flag{height:135px;bottom:0}.pillars{grid-template-columns:1fr}.pillar{border-right:0;border-bottom:1px solid rgba(255,255,255,.11)}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-<div class="brand"><div class="mark">✦</div><div>Оздоровительная<br>карта России</div></div>
-<nav><a href="#regions">Регионы</a><a href="#places">Места отдыха</a><a href="#goods">Товары</a><a href="#practices">Практики</a><a href="#about">О проекте</a></nav>
-<div class="actions"><button class="btn">Войти</button><button class="btn red">Стать участником</button></div>
+  <div class="brand"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></div>
+  <nav><a href="#regions">Регионы</a><a href="#places">Места отдыха</a><a href="#goods">Товары</a><a href="#practices">Практики</a><a href="#about">О проекте</a></nav>
+  <div class="actions"><span class="search-icon">⌕</span><button class="btn btn-login">Войти</button><button class="btn btn-join">Стать участником</button></div>
 </header>
+
 <section class="hero">
-<div class="copy">
-<h1>Оздоровительная карта России</h1>
-<div class="subtitle">Природа. Здоровые люди. Возможности.</div>
-<div class="search"><input id="regionSearch" placeholder="Выберите регион"><button id="searchBtn">⌕</button></div>
-<div class="quick">
-<a href="#places"><div class="i">⌂</div><b>Места<br>для отдыха</b></a>
-<a href="#goods"><div class="i">▢</div><b>Товары<br>для здоровья</b></a>
-<a href="#practices"><div class="i">✣</div><b>Практики<br>и технологии</b></a>
-<a href="#regions"><div class="i">♧</div><b>Регионы<br>России</b></a>
-</div>
-</div>
-<div class="visual">
-<div class="mapstage">
-<div class="mapglow"></div>
-<svg class="rmap" viewBox="0 0 900 520" role="img" aria-label="Карта России">
-<defs>
-<pattern id="photoPattern" patternUnits="objectBoundingBox" width="1" height="1">
-<image id="mapPhoto" href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85" x="0" y="0" width="900" height="520" preserveAspectRatio="xMidYMid slice"/>
-</pattern>
-</defs>
-<path class="outline" d="M83,265 C110,240 136,226 169,224 C185,198 216,191 243,202 C265,181 298,178 321,189 C345,165 386,164 411,184 C438,164 481,165 510,188 C540,166 583,171 610,195 C640,178 681,183 710,206 C743,191 781,200 803,223 L829,216 846,230 835,248 C850,259 853,274 840,286 L858,302 845,316 C818,316 793,304 774,294 C744,307 708,311 674,303 C642,325 603,331 565,320 C533,337 494,340 458,328 C426,346 383,346 351,330 C317,342 277,340 247,323 C214,329 181,320 157,303 C129,303 102,291 83,265 Z"/>
-<path class="inner" d="M158 302 C180 275 196 248 206 221 M247 323 C260 279 273 238 289 190 M351 330 C357 281 371 231 392 178 M458 328 C464 280 484 233 510 188 M565 320 C574 275 591 230 610 195 M674 303 C686 267 696 232 710 206 M774 294 C784 272 790 247 803 223"/>
-</svg>
-<div class="slogan">ЕДИНАЯ СТРАНА<br>ЗДОРОВЫЕ ЛЮДИ<br>БОЛЬШИЕ<br>ВОЗМОЖНОСТИ<small></small></div>
-<div class="caption">Фото меняются только внутри контура России</div>
-<div class="dots"><button class="dot on"></button><button class="dot"></button><button class="dot"></button></div>
-</div>
-</div>
-<div class="flag"><svg viewBox="0 0 1600 200" preserveAspectRatio="none"><path d="M0 60 C260 150 390 10 690 95 C980 175 1180 65 1600 110 L1600 145 C1180 100 980 205 690 130 C390 45 260 185 0 95 Z" fill="#fff"/><path d="M0 95 C260 185 390 45 690 130 C980 205 1180 100 1600 145 L1600 175 C1180 130 980 235 690 160 C390 75 260 215 0 125 Z" fill="#1c5dc2"/><path d="M0 125 C260 215 390 75 690 160 C980 235 1180 130 1600 175 L1600 200 C1180 155 980 260 690 185 C390 100 260 240 0 150 Z" fill="#e52f32"/></svg></div>
+  <div class="copy">
+    <h1>Оздоровительная<br>карта России</h1>
+    <div class="subtitle">Природа. Здоровые люди. Возможности.</div>
+    <div class="search"><input placeholder="Выберите регион"><button>⌕</button></div>
+    <div class="quick">
+      <a class="q" href="#places"><span class="ico">⌂</span>Места<br>для отдыха</a>
+      <a class="q" href="#goods"><span class="ico">▢</span>Товары<br>для здоровья</a>
+      <a class="q" href="#practices"><span class="ico">✣</span>Практики<br>и технологии</a>
+      <a class="q" href="#regions"><span class="ico">♧</span>Регионы<br>России</a>
+    </div>
+  </div>
+
+  <div class="visual">
+    <div class="map-wrap">
+      <div id="mapPhoto" class="map-photo"></div>
+      <img class="map-outline" src="assets/russia-outline.png" alt="">
+      <div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button></div>
+    </div>
+    <div class="slogan">ЕДИНАЯ СТРАНА<br>ЗДОРОВЫЕ ЛЮДИ<br>БОЛЬШИЕ<br>ВОЗМОЖНОСТИ<div class="mini"></div></div>
+  </div>
+
+  <div class="flag" aria-hidden="true">
+    <svg viewBox="0 0 1800 240" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="w" x1="0" x2="1"><stop stop-color="#e8f3ff"/><stop offset=".38" stop-color="#fff"/><stop offset=".72" stop-color="#edf5fc"/><stop offset="1" stop-color="#cfddeb"/></linearGradient>
+        <linearGradient id="b" x1="0" x2="1"><stop stop-color="#0546a1"/><stop offset=".38" stop-color="#176ad0"/><stop offset=".72" stop-color="#0848a7"/><stop offset="1" stop-color="#033a85"/></linearGradient>
+        <linearGradient id="r" x1="0" x2="1"><stop stop-color="#db171c"/><stop offset=".38" stop-color="#ff3e3a"/><stop offset=".72" stop-color="#de1c25"/><stop offset="1" stop-color="#b80f19"/></linearGradient>
+      </defs>
+      <path d="M-40 22 C150 82 245 194 430 174 C650 150 745 68 940 124 C1140 182 1280 222 1840 172 L1840 213 C1290 259 1125 222 934 168 C735 112 650 198 430 214 C234 232 135 118 -40 65 Z" fill="url(#w)"/>
+      <path d="M-40 65 C135 118 234 232 430 214 C650 198 735 112 934 168 C1125 222 1290 259 1840 213 L1840 240 C1290 285 1110 259 925 205 C725 148 650 236 430 250 C221 265 128 160 -40 111 Z" fill="url(#b)"/>
+      <path d="M-40 111 C128 160 221 265 430 250 C650 236 725 148 925 205 C1110 259 1290 285 1840 240 L1840 285 C1290 327 1098 301 915 247 C712 187 645 276 430 289 C210 300 118 205 -40 159 Z" fill="url(#r)"/>
+      <path d="M-20 26 C110 77 190 166 355 171" stroke="rgba(255,255,255,.45)" stroke-width="3" fill="none"/>
+    </svg>
+  </div>
 </section>
-<div class="pillars"><div class="pillar"><div class="i">⌁</div><div><b>УНИКАЛЬНАЯ ПРИРОДА</b><span>Горы. Реки. Озёра. Леса.</span></div></div><div class="pillar"><div class="i">♡</div><div><b>ЗДОРОВОЕ ОБЩЕСТВО</b><span>Активные люди. Долгая жизнь.</span></div></div><div class="pillar"><div class="i">▥</div><div><b>НОВЫЕ ВОЗМОЖНОСТИ</b><span>Развитие регионов. Благополучие.</span></div></div><div class="pillar"><div class="i">♧</div><div><b>СИЛЬНАЯ РОССИЯ</b><span>В гармонии с природой.</span></div></div></div>
-<section class="section" id="regions"><h2>Регионы России</h2><p>Полноценные страницы регионов: природные лечебные ресурсы, климат, курортные зоны и участники платформы.</p><div class="cards"><div class="card"><h3>Кабардино-Балкария</h3><p>Горный климат, минеральные воды, курортные территории.</p></div><div class="card"><h3>Ставропольский край</h3><p>Кавказские Минеральные Воды, санаторно-курортные направления.</p></div><div class="card"><h3>Республика Алтай</h3><p>Горные территории, природные ресурсы, оздоровительные программы.</p></div></div></section>
-<section class="section" id="places"><h2>Места для оздоровительного отдыха</h2><p>Санатории, пансионаты, wellness-комплексы, SPA-отели, эко-отели и другие участники.</p></section>
-<section class="section" id="goods"><h2>Производители товаров для оздоровления</h2><p>Карточки производителей и товаров с переходом на маркетплейс.</p></section>
-<section class="section" id="practices"><h2>Практики и технологии</h2><p>Программы, методики, специалисты, центры, оборудование и технологии.</p></section>
-<section class="section" id="about"><h2>О проекте</h2><p>Единая система навигации по оздоровительным возможностям регионов России.</p></section>
-<footer>Оздоровительная карта России</footer>
+
+<div class="pillars">
+  <div class="pillar"><div class="pico">⌁</div><div><b>УНИКАЛЬНАЯ<br>ПРИРОДА</b><span>Горы. Реки. Озёра. Леса.</span></div></div>
+  <div class="pillar"><div class="pico">♡</div><div><b>ЗДОРОВОЕ<br>ОБЩЕСТВО</b><span>Активные люди. Долгая жизнь.</span></div></div>
+  <div class="pillar"><div class="pico">▥</div><div><b>НОВЫЕ<br>ВОЗМОЖНОСТИ</b><span>Развитие регионов. Благополучие.</span></div></div>
+  <div class="pillar"><div class="pico">♧</div><div><b>СИЛЬНАЯ<br>РОССИЯ</b><span>В гармонии с природой.</span></div></div>
 </div>
+
+<section class="section" id="regions"><h2>Регионы России</h2><p>Страницы регионов с природными лечебными ресурсами, климатом, курортными зонами и участниками платформы.</p></section>
+<section class="section" id="places"><h2>Места для оздоровительного отдыха</h2><p>Санатории, пансионаты, SPA и wellness-комплексы.</p></section>
+<section class="section" id="goods"><h2>Производители товаров</h2><p>Каталог производителей и товаров для оздоровления.</p></section>
+<section class="section" id="practices"><h2>Практики и технологии</h2><p>Методики, программы, специалисты, центры, оборудование и технологии.</p></section>
+<section class="section" id="about"><h2>О проекте</h2><p>Единая цифровая система навигации по оздоровительным возможностям России.</p></section>
+</div>
+
 <script>
-const slides=[
-"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85",
-"https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1600&q=85",
-"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=85"
-];let idx=0;const img=document.getElementById('mapPhoto'),dots=[...document.querySelectorAll('.dot')];function show(n){idx=n;img.setAttribute('href',slides[idx]);dots.forEach((d,i)=>d.classList.toggle('on',i===idx))}dots.forEach((d,i)=>d.onclick=()=>show(i));setInterval(()=>show((idx+1)%slides.length),5000);document.getElementById('searchBtn').onclick=()=>{const q=document.getElementById('regionSearch').value.trim();if(q)alert('Поиск региона: '+q+'\nПодключение к базе регионов будет следующим этапом.');};
+const map=document.getElementById("mapPhoto");
+const dots=[...document.querySelectorAll(".dot")];
+const pics=["assets/nature-1.jpg","assets/nature-2.jpg","assets/nature-3.jpg"];
+let i=0;
+function show(n){
+  i=n;
+  map.style.backgroundImage=`url("${pics[i]}")`;
+  dots.forEach((d,k)=>d.classList.toggle("active",k===i));
+}
+dots.forEach((d,k)=>d.addEventListener("click",()=>show(k)));
+setInterval(()=>show((i+1)%pics.length),5200);
 </script>
-</body></html>
+</body>
+</html>
