@@ -71,3 +71,41 @@
 - добавлена кнопка «Назад» на внутренних страницах;
 - добавлено автодополнение регионов в поисковых полях и формах;
 - список регионов используется также на странице карты.
+
+
+Версия 11 - имиджевые фоны внутренних страниц:
+- index.html: основной синий фон без изменений.
+- 9 отдельных панорамных фонов в assets/backgrounds/.
+- 18 внутренних страниц используют эти фоны по смысловым группам.
+- фоны приглушены полупрозрачным синим слоем и имеют очень медленное движение.
+- при системной настройке Reduced Motion анимация отключается.
+
+Распределение:
+- map.html: bg-01-kavkaz.jpg
+- regions.html: bg-02-sibir.jpg
+- kbr.html: bg-01-kavkaz.jpg
+- places.html: bg-04-volga.jpg
+- booking-request.html: bg-04-volga.jpg
+- manufacturers.html: bg-05-russian-fields.jpg
+- practices.html: bg-03-baykal.jpg
+- verification.html: bg-03-baykal.jpg
+- participant.html: bg-06-russian-north.jpg
+- about.html: bg-06-russian-north.jpg
+- integrations.html: bg-07-kamchatka.jpg
+- help.html: bg-02-sibir.jpg
+- privacy.html: bg-09-ural-lake.jpg
+- regional-operator.html: bg-08-city-river.jpg
+- participant-account.html: bg-08-city-river.jpg
+- admin-demo.html: bg-08-city-river.jpg
+- login.html: bg-09-ural-lake.jpg
+- register.html: bg-09-ural-lake.jpg
+- user-account.html: bg-09-ural-lake.jpg
+
+
+Версия 12 - облегчённые фоны:
+- у всех 9 фоновых изображений убраны крайние рамки/стыки;
+- изображения уменьшены до 1600 px по ширине;
+- метаданные удалены;
+- JPEG оптимизирован progressive/optimize;
+- целевой вес около 100-180 КБ на файл;
+- имена файлов сохранены, поэтому HTML/CSS менять не требуется.
