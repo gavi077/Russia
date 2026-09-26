@@ -141,6 +141,7 @@ h1{
   min-height:205px;transition:.2s
 }
 .info-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.075)}
+.card-link{display:block;color:inherit;text-decoration:none}
 .info-card .bigico{font-size:34px;margin-bottom:18px}
 .info-card h3{font-size:19px;margin:0 0 10px}
 .info-card p{font-size:14px;line-height:1.6;color:#b9cde0;margin:0}
@@ -236,13 +237,13 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
 <header>
   <div class="brand"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></div>
   <nav>
-    <a href="#regions">Регионы</a>
-    <a href="#places">Места отдыха</a>
-    <a href="#goods">Товары</a>
-    <a href="#practices">Практики</a>
-    <a href="#about">О проекте</a>
+    <a href="regions.html">Регионы</a>
+    <a href="places.html">Места отдыха</a>
+    <a href="manufacturers.html">Товары</a>
+    <a href="practices.html">Практики</a>
+    <a href="about.html">О проекте</a>
   </nav>
-  <div class="actions"><button class="btn btn-login">Войти</button><button class="btn btn-join" onclick="document.getElementById('participants').scrollIntoView()">Стать участником</button></div>
+  <div class="actions"><a class="btn btn-login" href="login.html" style="text-decoration:none">Войти</a><a class="btn btn-join" href="participant.html" style="text-decoration:none;display:inline-flex;align-items:center">Стать участником</a></div>
 </header>
 
 <section class="hero">
@@ -254,10 +255,10 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
       <button id="regionSearchBtn">⌕</button>
     </div>
     <div class="quick">
-      <a class="q" href="#places"><span class="ico">⌂</span>Места<br>для отдыха</a>
-      <a class="q" href="#goods"><span class="ico">▢</span>Товары<br>для здоровья</a>
-      <a class="q" href="#practices"><span class="ico">✣</span>Практики<br>и технологии</a>
-      <a class="q" href="#regions"><span class="ico">♧</span>Регионы<br>России</a>
+      <a class="q" href="places.html"><span class="ico">⌂</span>Места<br>для отдыха</a>
+      <a class="q" href="manufacturers.html"><span class="ico">▢</span>Товары<br>для здоровья</a>
+      <a class="q" href="practices.html"><span class="ico">✣</span>Практики<br>и технологии</a>
+      <a class="q" href="regions.html"><span class="ico">♧</span>Регионы<br>России</a>
     </div>
   </div>
 
@@ -338,14 +339,14 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
       <h2>Оздоровительные регионы</h2>
       <p class="section-lead">Каждый регион представлен отдельной страницей с описанием климата, природных лечебных ресурсов, курортных зон и участников платформы.</p>
     </div>
-    <a class="link-btn" href="#regions">Все регионы</a>
+    <a class="link-btn" href="regions.html">Все регионы</a>
   </div>
   <div class="grid-3">
-    <article class="info-card region-card">
+    <a class="card-link" href="kbr.html"><article class="info-card region-card">
       <h3>Кабардино-Балкарская Республика</h3>
       <p>Страница региона объединяет сведения о природных лечебных факторах, курортных территориях, местах размещения, производителях и практиках.</p>
       <div class="region-meta"><span>Горный климат</span><span>Минеральные воды</span><span>Курортные зоны</span></div>
-    </article>
+    </article></a>
     <article class="info-card region-card">
       <h3>Ставропольский край</h3>
       <p>Региональная страница с поиском мест оздоровительного отдыха, природных лечебных ресурсов, производителей и профильных программ.</p>
@@ -443,7 +444,7 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
       <span class="eyebrow">Для организаций</span>
       <h2>Стать участником платформы</h2>
       <p class="section-lead">Санатории, производители и авторы оздоровительных практик могут зарегистрироваться, создать профиль, загрузить документы, пройти верификацию и получать обращения пользователей.</p>
-      <a class="cta" href="#participants">Стать участником</a>
+      <a class="cta" href="participant.html">Стать участником</a>
     </div>
     <div class="benefits">
       <div class="benefit">✓ Карточка организации</div>
@@ -493,9 +494,9 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
     <div class="brand"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></div>
     <p>Единая цифровая система навигации по оздоровительным возможностям регионов России.</p>
   </div>
-  <div><h4>Платформа</h4><a href="#regions">Регионы</a><a href="#places">Места отдыха</a><a href="#goods">Производители</a><a href="#practices">Практики</a></div>
-  <div><h4>Участникам</h4><a href="#participants">Стать участником</a><a href="#participants">Верификация</a><a href="#participants">Личный кабинет</a></div>
-  <div><h4>Информация</h4><a href="#about">О проекте</a><a href="#about">Помощь</a><a href="#about">Контакты</a></div>
+  <div><h4>Платформа</h4><a href="regions.html">Регионы</a><a href="places.html">Места отдыха</a><a href="#goods">Производители</a><a href="practices.html">Практики</a></div>
+  <div><h4>Участникам</h4><a href="participant.html">Стать участником</a><a href="verification.html">Верификация</a><a href="participant-account.html">Личный кабинет</a></div>
+  <div><h4>Информация</h4><a href="about.html">О проекте</a><a href="help.html">Помощь</a><a href="about.html">Контакты</a></div>
 </footer>
 
 </div>
@@ -515,7 +516,7 @@ function setPatrioticMap(){
 document.getElementById("regionSearchBtn").addEventListener("click",function(){
   const q=document.getElementById("regionSearch").value.trim();
   if(!q) return;
-  document.getElementById("regions").scrollIntoView({behavior:"smooth"});
+  window.location.href="regions.html?q="+encodeURIComponent(q);
 });
 document.getElementById("regionSearch").addEventListener("keydown",function(e){
   if(e.key==="Enter") document.getElementById("regionSearchBtn").click();

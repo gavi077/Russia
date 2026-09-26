@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Кабардино-Балкарская Республика - Оздоровительная карта России</title>
+<meta name="description" content="Оздоровительные возможности Кабардино-Балкарской Республики: климат, природные ресурсы, курортные зоны, места размещения, производители, практики и технологии.">
+<style>
+:root{
+  --navy:#052c58;--navy2:#073d75;--navy3:#0a4f90;--blue:#2166c8;
+  --red:#ed2f30;--green:#2fa67e;--text:#fff;--muted:#b9cde0;
+  --line:rgba(255,255,255,.13);--panel:rgba(255,255,255,.055)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;min-height:100%;background:#052c58;color:#fff}
+body{
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 72% 22%,rgba(34,117,202,.26),transparent 31%),
+    radial-gradient(circle at 20% 80%,rgba(20,88,155,.18),transparent 28%),
+    linear-gradient(135deg,#04264b 0%,#06396e 53%,#05274c 100%);
+  overflow-x:hidden
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;opacity:.16;pointer-events:none;
+  background:repeating-radial-gradient(ellipse at 75% 38%,transparent 0 28px,rgba(116,180,236,.16) 29px 30px,transparent 31px 44px);
+  mask-image:linear-gradient(to left,black 0 48%,transparent 86%)
+}
+.wrap{max-width:1460px;margin:auto;padding:0 32px}
+header{
+  height:86px;display:grid;grid-template-columns:300px 1fr auto;align-items:center;gap:24px;
+  position:relative;z-index:20
+}
+.brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:17px;line-height:1.08}
+.emblem{width:50px;height:50px;border:1.5px solid rgba(255,255,255,.85);border-radius:50%;display:grid;place-items:center;font-size:25px}
+nav{display:flex;justify-content:center;gap:32px;font-size:14px}
+nav a{color:#fff;text-decoration:none;opacity:.95}
+.actions{display:flex;gap:12px}
+.btn{height:47px;padding:0 24px;border-radius:11px;font-weight:700;cursor:pointer}
+.btn-login{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.58)}
+.btn-join{background:var(--red);color:#fff;border:0}
+
+.breadcrumbs{font-size:13px;color:#aac3d8;padding-top:22px}
+.breadcrumbs a{color:#cfe3f4;text-decoration:none}
+.region-hero{
+  min-height:520px;display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center;padding:44px 0 56px
+}
+.region-copy h1{
+  font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:62px;line-height:1.01;margin:0 0 18px
+}
+.region-copy .lead{font-size:20px;line-height:1.6;color:#d7e5f0;max-width:760px}
+.tags{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0}
+.tag{font-size:12px;padding:8px 11px;border-radius:999px;background:rgba(69,144,211,.16);border:1px solid rgba(126,189,242,.22);color:#e2f1fd}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:800}
+.cta-primary{background:var(--red);color:#fff}
+.cta-secondary{border:1px solid rgba(255,255,255,.28);color:#fff;background:rgba(255,255,255,.035)}
+
+.region-visual{
+  min-height:390px;border-radius:28px;border:1px solid rgba(255,255,255,.1);
+  background:
+    radial-gradient(circle at 56% 42%,rgba(61,145,219,.28),transparent 38%),
+    linear-gradient(160deg,rgba(10,68,123,.88),rgba(4,38,72,.92));
+  position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.18)
+}
+.region-visual:before{
+  content:"";position:absolute;inset:0;opacity:.45;
+  background:
+    radial-gradient(circle at 68% 25%,rgba(255,255,255,.07),transparent 14%),
+    repeating-radial-gradient(ellipse at 55% 55%,transparent 0 22px,rgba(255,255,255,.06) 23px 24px,transparent 25px 38px)
+}
+.mountain-line{
+  position:absolute;left:7%;right:7%;bottom:28%;height:45%;
+  clip-path:polygon(0 83%,9% 63%,18% 74%,29% 42%,38% 65%,52% 20%,64% 54%,72% 38%,86% 70%,100% 48%,100% 100%,0 100%);
+  background:linear-gradient(180deg,rgba(187,222,248,.44),rgba(56,121,180,.18))
+}
+.region-label{
+  position:absolute;left:28px;bottom:28px;right:28px;
+  padding:18px 20px;border-radius:16px;background:rgba(4,35,67,.62);border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(12px)
+}
+.region-label b{display:block;font-size:18px;margin-bottom:5px}
+.region-label span{font-size:13px;color:#b8ccdd}
+
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:4px 0 0
+}
+.stat{
+  padding:18px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)
+}
+.stat b{font-size:15px;display:block;margin-bottom:6px}
+.stat span{font-size:12px;color:#a9bfd3}
+
+.section{padding:72px 0;border-top:1px solid rgba(255,255,255,.05)}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:28px}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8fc5f4;margin-bottom:12px;font-weight:800}
+.section h2{font-family:Georgia,"Times New Roman",serif;font-size:42px;font-weight:500;margin:0 0 12px}
+.section-lead{color:var(--muted);font-size:17px;line-height:1.65;max-width:860px;margin:0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px;
+  min-height:190px
+}
+.card h3{margin:0 0 10px;font-size:19px}.card p{color:#b9cde0;font-size:14px;line-height:1.65;margin:0}
+.card .ico{font-size:31px;margin-bottom:16px}
+.list{display:grid;gap:11px;margin-top:18px}
+.list div{padding:12px 14px;border-radius:12px;background:rgba(5,43,80,.66);font-size:14px}
+.pill{display:inline-block;font-size:12px;padding:7px 10px;border-radius:999px;background:rgba(47,166,126,.13);border:1px solid rgba(74,191,151,.22);color:#cdeee2;margin:6px 6px 0 0}
+.catalog{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+}
+.catalog-card{
+  min-height:230px;border-radius:20px;background:linear-gradient(160deg,rgba(13,74,130,.72),rgba(5,40,75,.82));
+  border:1px solid rgba(255,255,255,.1);padding:24px;display:flex;flex-direction:column;justify-content:space-between
+}
+.catalog-card .count{font-size:38px;font-family:Georgia,serif}
+.catalog-card a{color:#fff;text-decoration:none;font-weight:800}
+.notice{
+  padding:18px 20px;border-left:3px solid #4aa6ef;border-radius:12px;background:rgba(6,49,91,.7);color:#c6d9e9;font-size:14px;line-height:1.6
+}
+.footer{
+  border-top:1px solid rgba(255,255,255,.11);padding:40px 0 55px;color:#b8ccdd;font-size:13px
+}
+@media(max-width:1050px){
+  header{grid-template-columns:1fr auto}nav{display:none}
+  .region-hero{grid-template-columns:1fr}.region-copy h1{font-size:50px}
+  .stats{grid-template-columns:repeat(2,1fr)}.grid-3,.catalog{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .wrap{padding:0 18px}.btn-login{display:none}.brand{font-size:14px}.emblem{width:42px;height:42px}
+  .region-copy h1{font-size:40px}.region-copy .lead{font-size:17px}
+  .grid-3,.grid-2,.catalog,.stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></div>
+  <nav>
+    <a href="regions.html">Регионы</a>
+    <a href="places.html">Места отдыха</a>
+    <a href="manufacturers.html">Товары</a>
+    <a href="practices.html">Практики</a>
+    <a href="about.html">О проекте</a>
+  </nav>
+  <div class="actions"><a class="btn btn-login" href="login.html" style="text-decoration:none">Войти</a><a class="btn btn-join" href="participant.html" style="text-decoration:none;display:inline-flex;align-items:center">Стать участником</a></div>
+</header>
+
+<div class="breadcrumbs"><a href="index.html">Главная</a> / <a href="regions.html">Регионы</a> / Кабардино-Балкарская Республика</div>
+
+<section class="region-hero">
+  <div class="region-copy">
+    <span class="eyebrow">Регион России</span>
+    <h1>Кабардино-Балкарская Республика</h1>
+    <p class="lead">Региональная страница объединяет сведения о природных лечебных факторах, климатических особенностях, курортных территориях, местах размещения, производителях и оздоровительных практиках.</p>
+    <div class="tags">
+      <span class="tag">Горный климат</span>
+      <span class="tag">Минеральные воды</span>
+      <span class="tag">Климатотерапия</span>
+      <span class="tag">Курортные территории</span>
+    </div>
+    <div class="hero-actions">
+      <a class="cta cta-primary" href="#accommodation">Найти место для оздоровления</a>
+      <a class="cta cta-secondary" href="#resources">Природные ресурсы</a>
+    </div>
+  </div>
+
+  <div class="region-visual">
+    <div class="mountain-line"></div>
+    <div class="region-label">
+      <b>Кабардино-Балкария</b>
+      <span>Раздел готов для дальнейшего наполнения фотографиями региона, картой объектов и реальными карточками участников.</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><b>Места размещения</b><span>Санатории, пансионаты, SPA и wellness</span></div>
+  <div class="stat"><b>Производители</b><span>Товары для здоровья и оздоровления</span></div>
+  <div class="stat"><b>Практики и технологии</b><span>Программы, методики и решения</span></div>
+  <div class="stat"><b>Курортные зоны</b><span>Региональные территории отдыха и оздоровления</span></div>
+</div>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">О регионе</span>
+      <h2>Оздоровительный потенциал региона</h2>
+      <p class="section-lead">На этой странице пользователь получает единое представление о природных и курортных возможностях региона, а затем переходит к конкретным местам размещения, программам, производителям и практикам.</p>
+    </div>
+  </div>
+  <div class="notice">В текущей версии мы не подставляем вымышленные количества объектов и не создаем фиктивные организации. Числовая статистика будет рассчитываться автоматически после наполнения базы реальными участниками.</div>
+</section>
+
+<section class="section" id="resources">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Природные лечебные факторы</span>
+      <h2>Природные ресурсы Кабардино-Балкарии</h2>
+      <p class="section-lead">Структура страницы предусматривает отдельное описание каждого фактора и привязку к местам и программам, где он используется.</p>
+    </div>
+  </div>
+  <div class="grid-3">
+    <article class="card"><div class="ico">⛰</div><h3>Горный климат</h3><p>Отдельный раздел для описания климатических условий, высотных зон и программ, использующих особенности горного климата.</p></article>
+    <article class="card"><div class="ico">💧</div><h3>Минеральные воды</h3><p>Раздел для описания источников и организаций, использующих минеральные воды в оздоровительных программах.</p></article>
+    <article class="card"><div class="ico">♧</div><h3>Природная среда</h3><p>Горные территории, лесные зоны и природные ландшафты как часть регионального оздоровительного предложения.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Климат</span>
+      <h2>Климатические особенности</h2>
+      <p class="section-lead">Здесь будет размещаться информация о сезонности, температурных условиях, высотности и других климатических параметрах именно с точки зрения отдыха и оздоровления.</p>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Климатотерапия</h3>
+      <p>Блок для объяснения того, какие климатические условия региона используются в оздоровительных программах и в каких курортных территориях они доступны.</p>
+      <div><span class="pill">Высотные зоны</span><span class="pill">Горный воздух</span><span class="pill">Сезонность</span></div>
+    </div>
+    <div class="card">
+      <h3>Когда ехать</h3>
+      <p>После наполнения базы здесь можно показывать сезонные рекомендации по типу отдыха, программам и природным лечебным факторам.</p>
+      <div><span class="pill">Весна</span><span class="pill">Лето</span><span class="pill">Осень</span><span class="pill">Зима</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Курортные территории</span>
+      <h2>Курортные зоны региона</h2>
+      <p class="section-lead">Для каждой курортной территории можно создать отдельную карточку с описанием, природными факторами, объектами размещения и программами.</p>
+    </div>
+  </div>
+  <div class="grid-3">
+    <article class="card">
+      <h3>Нальчик</h3>
+      <p>Отдельная курортная карточка с местами размещения, программами, природными факторами и инфраструктурой.</p>
+    </article>
+    <article class="card">
+      <h3>Приэльбрусье</h3>
+      <p>Отдельная страница территории с описанием горного климата, объектов размещения и возможностей активного отдыха.</p>
+    </article>
+    <article class="card">
+      <h3>Другие территории</h3>
+      <p>Администратор сможет добавлять новые курортные зоны через систему управления контентом без изменения кода сайта.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="accommodation">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Участники региона</span>
+      <h2>Что можно найти в Кабардино-Балкарии</h2>
+      <p class="section-lead">Пользователь выбирает одно из трех основных направлений и переходит к каталогу с фильтрами.</p>
+    </div>
+  </div>
+  <div class="catalog">
+    <article class="catalog-card">
+      <div><div class="count">01</div><h3>Места размещения</h3><p>Санатории, пансионаты, SPA-отели, wellness-комплексы и другие объекты.</p></div>
+      <a href="#">Открыть каталог →</a>
+    </article>
+    <article class="catalog-card">
+      <div><div class="count">02</div><h3>Производители</h3><p>Региональные производители товаров для здоровья и оздоровления.</p></div>
+      <a href="#">Открыть каталог →</a>
+    </article>
+    <article class="catalog-card">
+      <div><div class="count">03</div><h3>Практики и технологии</h3><p>Программы, методики, специалисты, центры, оборудование и технологии.</p></div>
+      <a href="#">Открыть каталог →</a>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Направления оздоровления</span>
+      <h2>Подбор по направлению</h2>
+      <p class="section-lead">Фильтры региона будут связаны с общими фильтрами платформы.</p>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="card"><h3>Сердечно-сосудистая система</h3><p>Подбор мест и программ по направлению.</p></div>
+    <div class="card"><h3>Опорно-двигательный аппарат</h3><p>Подбор мест и программ по направлению.</p></div>
+    <div class="card"><h3>Нервная система</h3><p>Подбор мест и программ по направлению.</p></div>
+    <div class="card"><h3>Дыхательная система</h3><p>Подбор мест и программ по направлению.</p></div>
+    <div class="card"><h3>ЖКТ</h3><p>Подбор мест и программ по направлению.</p></div>
+    <div class="card"><h3>Общее укрепление организма</h3><p>Подбор восстановительных и общеоздоровительных программ.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Следующий уровень</span>
+      <h2>Карта объектов региона</h2>
+      <p class="section-lead">На следующем этапе здесь появится интерактивная карта с реальными точками санаториев, производителей, практик и курортных зон. Для нее можно использовать OpenStreetMap и Leaflet, не меняя дизайн страницы.</p>
+    </div>
+  </div>
+  <div class="region-visual" style="min-height:340px">
+    <div class="region-label"><b>Интерактивная карта объектов</b><span>Фильтры: все объекты / места размещения / производители / практики / курортные зоны.</span></div>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="brand"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></div>
+  <p>Кабардино-Балкарская Республика - региональная страница платформы.</p>
+</div>
+
+</div>
+</body>
+</html>
