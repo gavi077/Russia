@@ -88,8 +88,6 @@ h1{
 }
 .russia-landscape{
   opacity:0;transition:opacity 2.4s ease;
-  transform-box:fill-box;transform-origin:center;
-  animation:russiaLandscapeMove 18s ease-in-out infinite alternate
 }
 .russia-landscape.is-active{opacity:1}
 .russia-outline-path{
@@ -101,12 +99,8 @@ h1{
   fill:none;stroke:rgba(255,255,255,.42);stroke-width:1.05;
   stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke
 }
-@keyframes russiaLandscapeMove{
-  from{transform:scale(1.00) translate3d(0,0,0)}
-  to{transform:scale(1.065) translate3d(-7px,-3px,0)}
-}
 @media(prefers-reduced-motion:reduce){
-  .russia-landscape{animation:none;transition:none}
+  .russia-landscape{transition:none}
 }
 .slogan{
   position:absolute;right:8px;top:78px;width:188px;border-left:2px solid #ff3b38;padding:11px 12px 11px 16px;
@@ -305,8 +299,8 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
         </defs>
         <g clip-path="url(#russiaClip)">
           <rect x="0" y="0" width="1000" height="600" fill="url(#russiaFallback)"></rect>
-          <image id="mapNatureA" class="russia-landscape is-active" x="0" y="0" width="1000" height="600" preserveAspectRatio="xMidYMid slice"></image>
-          <image id="mapNatureB" class="russia-landscape" x="0" y="0" width="1000" height="600" preserveAspectRatio="xMidYMid slice"></image>
+          <image id="mapNatureA" class="russia-landscape is-active" x="34" y="55" width="932" height="490" preserveAspectRatio="xMidYMid slice"></image>
+          <image id="mapNatureB" class="russia-landscape" x="34" y="55" width="932" height="490" preserveAspectRatio="xMidYMid slice"></image>
           <rect x="0" y="0" width="1000" height="600" fill="url(#russiaPhotoShade)"></rect>
         </g>
         <path id="russiaOutlinePath" class="russia-outline-path"></path>
