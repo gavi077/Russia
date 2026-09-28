@@ -40,6 +40,7 @@ header{
   position:relative;z-index:20;
 }
 .brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:17px;line-height:1.08}
+.brand-logo{width:52px;height:52px;object-fit:contain;display:block;flex:0 0 auto}
 .emblem{
   width:50px;height:50px;border:1.5px solid rgba(255,255,255,.85);border-radius:50%;
   display:grid;place-items:center;font-size:25px
@@ -70,7 +71,7 @@ h1{
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(660px,100%)}
 .q{
   min-height:112px;border-radius:14px;border:1px solid rgba(255,255,255,.25);
-  background:linear-gradient(180deg,rgba(38,96,150,.72),rgba(8,48,88,.76));
+  background:linear-gradient(180deg,rgba(26,79,129,.88),rgba(5,39,74,.90));
   display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;
   color:#fff;text-decoration:none;font-weight:700;font-size:14px;backdrop-filter:blur(10px);
   transition:.2s
@@ -103,9 +104,9 @@ h1{
   .russia-landscape{transition:none}
 }
 .slogan{
-  position:absolute;right:8px;top:78px;width:188px;border-left:2px solid #ff3b38;padding:11px 12px 11px 16px;
+  position:absolute;right:8px;top:28px;width:188px;border-left:2px solid #ff3b38;padding:11px 12px 11px 16px;
   font-size:14px;line-height:1.5;letter-spacing:.055em;
-  background:rgba(5,53,99,.38);border-radius:0 10px 10px 0;backdrop-filter:blur(3px)
+  background:rgba(5,45,84,.72);border-radius:0 10px 10px 0;backdrop-filter:blur(3px)
 }
 .slogan:after{
   content:"";display:block;margin-top:12px;width:110px;height:5px;border-radius:3px;
@@ -148,10 +149,10 @@ h1{
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .info-card{
-  background:var(--panel);border:1px solid rgba(255,255,255,.11);border-radius:20px;padding:24px;
+  background:rgba(7,48,86,.82);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:24px;
   min-height:205px;transition:.2s
 }
-.info-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.075)}
+.info-card:hover{transform:translateY(-3px);background:rgba(12,61,105,.90)}
 .card-link{display:block;color:inherit;text-decoration:none}
 .info-card .bigico{font-size:34px;margin-bottom:18px}
 .info-card h3{font-size:19px;margin:0 0 10px}
@@ -161,7 +162,7 @@ h1{
 .region-card{position:relative;overflow:hidden;min-height:230px}
 .region-card:before{
   content:"";position:absolute;inset:0;background:
-  linear-gradient(150deg,rgba(17,91,155,.18),rgba(2,29,55,.75)),
+  linear-gradient(150deg,rgba(8,59,105,.60),rgba(2,25,49,.90)),
   radial-gradient(circle at 75% 25%,rgba(72,156,226,.15),transparent 40%);
 }
 .region-card > *{position:relative;z-index:1}
@@ -169,12 +170,12 @@ h1{
 .region-meta span{font-size:12px;color:#c6d8e8}
 .factor{
   min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;
-  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(8,47,87,.66))
+  background:linear-gradient(180deg,rgba(7,55,98,.64),rgba(5,36,68,.90))
 }
 .factor strong{font-size:17px}
 .direction{
   display:flex;gap:14px;align-items:center;min-height:94px;padding:18px;
-  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:16px
+  background:rgba(7,48,86,.80);border:1px solid rgba(255,255,255,.14);border-radius:16px
 }
 .direction .dico{font-size:28px}
 .direction span{font-size:14px;font-weight:700;line-height:1.3}
@@ -182,12 +183,12 @@ h1{
   display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:stretch
 }
 .verify-panel,.steps-panel{
-  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:28px
+  background:rgba(7,48,86,.80);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:28px
 }
 .verify-list{display:grid;gap:12px;margin-top:20px}
 .verify-item{
   display:grid;grid-template-columns:42px 1fr auto;gap:13px;align-items:center;padding:14px;
-  background:rgba(4,40,75,.62);border-radius:14px
+  background:rgba(4,34,66,.84);border-radius:14px
 }
 .check{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(47,166,126,.16);color:#6be2b8}
 .level{font-size:12px;color:#9db7ce}
@@ -197,19 +198,19 @@ h1{
 .org-banner{
   background:
     radial-gradient(circle at 85% 30%,rgba(36,118,193,.28),transparent 35%),
-    linear-gradient(130deg,rgba(7,65,120,.82),rgba(4,38,72,.92));
+    linear-gradient(130deg,rgba(5,54,101,.92),rgba(3,31,61,.96));
   border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:34px;
   display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center
 }
 .benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.benefit{padding:14px 15px;border-radius:13px;background:rgba(255,255,255,.055);font-size:13px}
+.benefit{padding:14px 15px;border-radius:13px;background:rgba(7,48,86,.78);font-size:13px}
 .cta{
   display:inline-flex;align-items:center;justify-content:center;margin-top:20px;
   background:var(--red);color:#fff;text-decoration:none;padding:14px 22px;border-radius:12px;font-weight:800
 }
 .faq{display:grid;gap:11px}
 .faq details{
-  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);
+  background:rgba(7,48,86,.80);border:1px solid rgba(255,255,255,.14);
   border-radius:14px;padding:16px 18px
 }
 .faq summary{cursor:pointer;font-weight:700}
@@ -234,9 +235,9 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
   .section-head{display:block}.section-head .link-btn{display:inline-block;margin-top:18px}
 }
 @media(max-width:680px){
-  .wrap{padding:0 18px}.btn-login{display:none}.brand{font-size:14px}.emblem{width:42px;height:42px}
+  .wrap{padding:0 18px}.btn-login{display:none}.brand{font-size:14px}.emblem{width:42px;height:42px}.brand-logo{width:44px;height:44px}
   h1{font-size:42px}.subtitle{font-size:18px}.quick{grid-template-columns:1fr 1fr}
-  .visual{height:340px}.slogan{font-size:12px;width:135px;top:100px}.flag{height:135px}
+  .visual{height:340px}.slogan{font-size:12px;width:135px;top:56px}.flag{height:135px}
   .pillars{grid-template-columns:1fr}.benefits{grid-template-columns:1fr}
   footer{grid-template-columns:1fr}
 }
@@ -246,7 +247,7 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
 <div class="wrap">
 
 <header>
-  <div class="brand"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></div>
+  <div class="brand"><img class="brand-logo" src="data:image/webp;base64,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" alt="Логотип"><div>Оздоровительная<br>карта России</div></div>
   <nav>
     <a href="map.html">Карта</a>
     <a href="regions.html">Регионы</a>
@@ -267,10 +268,10 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
       <button id="regionSearchBtn">⌕</button>
     </div>
     <div class="quick">
-      <a class="q" href="places.html"><span class="ico">⌂</span>Места<br>для отдыха</a>
-      <a class="q" href="manufacturers.html"><span class="ico">▢</span>Товары<br>для здоровья</a>
-      <a class="q" href="practices.html"><span class="ico">✣</span>Практики<br>и технологии</a>
-      <a class="q" href="regions.html"><span class="ico">♧</span>Регионы<br>России</a>
+      <a class="q" href="places.html">Места<br>для отдыха</a>
+      <a class="q" href="manufacturers.html">Товары<br>для здоровья</a>
+      <a class="q" href="practices.html">Практики<br>и технологии</a>
+      <a class="q" href="regions.html">Регионы<br>России</a>
     </div>
   </div>
 
@@ -325,10 +326,10 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
 </section>
 
 <div class="pillars">
-  <div class="pillar"><div class="pico">⌁</div><div><b>УНИКАЛЬНАЯ<br>ПРИРОДА</b><span>Горы. Реки. Озёра. Леса.</span></div></div>
-  <div class="pillar"><div class="pico">♡</div><div><b>ЗДОРОВОЕ<br>ОБЩЕСТВО</b><span>Активные люди. Долгая жизнь.</span></div></div>
-  <div class="pillar"><div class="pico">▥</div><div><b>НОВЫЕ<br>ВОЗМОЖНОСТИ</b><span>Развитие регионов. Благополучие.</span></div></div>
-  <div class="pillar"><div class="pico">♧</div><div><b>СИЛЬНАЯ<br>РОССИЯ</b><span>В гармонии с природой.</span></div></div>
+  <div class="pillar"><div><b>УНИКАЛЬНАЯ<br>ПРИРОДА</b><span>Горы. Реки. Озёра. Леса.</span></div></div>
+  <div class="pillar"><div><b>ЗДОРОВОЕ<br>ОБЩЕСТВО</b><span>Активные люди. Долгая жизнь.</span></div></div>
+  <div class="pillar"><div><b>НОВЫЕ<br>ВОЗМОЖНОСТИ</b><span>Развитие регионов. Благополучие.</span></div></div>
+  <div class="pillar"><div><b>СИЛЬНАЯ<br>РОССИЯ</b><span>В гармонии с природой.</span></div></div>
 </div>
 
 <section class="section" id="about">
@@ -351,19 +352,19 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
   </div>
   <div class="grid-3">
     <article class="info-card" id="places">
-      <div class="bigico">⌂</div>
+      
       <h3>Места для оздоровительного отдыха</h3>
       <p>Санатории, пансионаты, SPA-отели, wellness-комплексы, эко-отели, глэмпинги и другие объекты размещения.</p>
       <div class="tag-row"><span class="tag">Санатории</span><span class="tag">SPA</span><span class="tag">Wellness</span></div>
     </article>
     <article class="info-card" id="goods">
-      <div class="bigico">▢</div>
+      
       <h3>Товары для здоровья</h3>
       <p>Каталог российских производителей: фиточаи, натуральная косметика, продукты питания, БАДы, оборудование и другие товары для оздоровления.</p>
       <div class="tag-row"><span class="tag">Фиточаи</span><span class="tag">Косметика</span><span class="tag">Оборудование</span></div>
     </article>
     <article class="info-card" id="practices">
-      <div class="bigico">✣</div>
+      
       <h3>Практики и технологии</h3>
       <p>Оздоровительные программы, методики, специалисты, центры, оборудование и технологии.</p>
       <div class="tag-row"><span class="tag">Программы</span><span class="tag">Методики</span><span class="tag">Технологии</span></div>
@@ -408,12 +409,12 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
     </div>
   </div>
   <div class="grid-3">
-    <div class="info-card factor"><div class="bigico">💧</div><strong>Минеральные воды</strong><p>Поиск регионов и организаций, использующих минеральные воды в оздоровительных программах.</p></div>
-    <div class="info-card factor"><div class="bigico">♨</div><strong>Лечебные грязи</strong><p>Информация о курортных территориях и программах, связанных с грязелечением.</p></div>
-    <div class="info-card factor"><div class="bigico">⛰</div><strong>Горный климат</strong><p>Региональные возможности климатического отдыха и оздоровительных программ.</p></div>
-    <div class="info-card factor"><div class="bigico">≋</div><strong>Морской климат</strong><p>Оздоровительные территории и места размещения на морском побережье.</p></div>
-    <div class="info-card factor"><div class="bigico">♧</div><strong>Лес и природная среда</strong><p>Природные территории, используемые для отдыха, восстановления и климатотерапии.</p></div>
-    <div class="info-card factor"><div class="bigico">❧</div><strong>Фитотерапия</strong><p>Практики, программы и товары, основанные на растительных компонентах.</p></div>
+    <div class="info-card factor"><strong>Минеральные воды</strong><p>Поиск регионов и организаций, использующих минеральные воды в оздоровительных программах.</p></div>
+    <div class="info-card factor"><strong>Лечебные грязи</strong><p>Информация о курортных территориях и программах, связанных с грязелечением.</p></div>
+    <div class="info-card factor"><strong>Горный климат</strong><p>Региональные возможности климатического отдыха и оздоровительных программ.</p></div>
+    <div class="info-card factor"><strong>Морской климат</strong><p>Оздоровительные территории и места размещения на морском побережье.</p></div>
+    <div class="info-card factor"><strong>Лес и природная среда</strong><p>Природные территории, используемые для отдыха, восстановления и климатотерапии.</p></div>
+    <div class="info-card factor"><strong>Фитотерапия</strong><p>Практики, программы и товары, основанные на растительных компонентах.</p></div>
   </div>
 </section>
 
@@ -426,12 +427,12 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
     </div>
   </div>
   <div class="grid-3">
-    <div class="direction"><div class="dico">♡</div><span>Сердечно-сосудистая система</span></div>
-    <div class="direction"><div class="dico">◇</div><span>Опорно-двигательный аппарат</span></div>
-    <div class="direction"><div class="dico">◎</div><span>Нервная система</span></div>
-    <div class="direction"><div class="dico">◌</div><span>Дыхательная система</span></div>
-    <div class="direction"><div class="dico">≈</div><span>ЖКТ</span></div>
-    <div class="direction"><div class="dico">☀</div><span>Общее укрепление организма</span></div>
+    <div class="direction"><span>Сердечно-сосудистая система</span></div>
+    <div class="direction"><span>Опорно-двигательный аппарат</span></div>
+    <div class="direction"><span>Нервная система</span></div>
+    <div class="direction"><span>Дыхательная система</span></div>
+    <div class="direction"><span>ЖКТ</span></div>
+    <div class="direction"><span>Общее укрепление организма</span></div>
   </div>
 </section>
 
@@ -470,10 +471,10 @@ footer a{display:block;color:#b8ccdd;text-decoration:none;margin:8px 0}
     </div>
   </div>
   <div class="grid-4">
-    <div class="info-card"><div class="bigico">1</div><h3>Выберите регион</h3><p>Найдите нужный субъект России через поиск или региональный каталог.</p></div>
-    <div class="info-card"><div class="bigico">2</div><h3>Выберите направление</h3><p>Перейдите к местам размещения, товарам, практикам или оздоровительным программам.</p></div>
-    <div class="info-card"><div class="bigico">3</div><h3>Изучите информацию</h3><p>Сравните программы, условия, документы, рейтинги и отзывы.</p></div>
-    <div class="info-card"><div class="bigico">4</div><h3>Совершите действие</h3><p>Оставьте заявку на размещение или перейдите к покупке товара на партнерском маркетплейсе.</p></div>
+    <div class="info-card"><h3>Выберите регион</h3><p>Найдите нужный субъект России через поиск или региональный каталог.</p></div>
+    <div class="info-card"><h3>Выберите направление</h3><p>Перейдите к местам размещения, товарам, практикам или оздоровительным программам.</p></div>
+    <div class="info-card"><h3>Изучите информацию</h3><p>Сравните программы, условия, документы, рейтинги и отзывы.</p></div>
+    <div class="info-card"><h3>Совершите действие</h3><p>Оставьте заявку на размещение или перейдите к покупке товара на партнерском маркетплейсе.</p></div>
   </div>
 </section>
 
