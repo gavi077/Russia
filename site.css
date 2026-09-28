@@ -145,3 +145,118 @@ body.secondary-bg > .wrap{
 @media (prefers-reduced-motion: reduce){
   body.secondary-bg::after{animation:none}
 }
+
+
+/* =========================================================
+   v14 VISUAL PATCH
+   Только визуальная доводка. Карта, регионы, API и логика не меняются.
+   ========================================================= */
+
+/* Фирменный логотип вместо временной круглой пиктограммы */
+.emblem{
+  width:52px;
+  height:52px;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+}
+.emblem .site-brand-logo,
+.site-brand-logo{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  display:block;
+  flex:0 0 auto;
+  filter:drop-shadow(0 4px 9px rgba(0,0,0,.14));
+}
+.footer .emblem .site-brand-logo{
+  width:46px;
+  height:46px;
+}
+
+/* На внутренних страницах убираем временные декоративные emoji-значки.
+   Главная страница не получает класс inner-page-clean, поэтому ее значки остаются. */
+body.inner-page-clean .card .ico,
+body.inner-page-clean .info-card .bigico,
+body.inner-page-clean .direction .dico{
+  display:none !important;
+}
+
+/* Фон внутренних страниц: природа остается видимой,
+   но синяя вуаль становится плотнее для четкости белого текста. */
+body.secondary-bg::after{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(3,28,55,.79) 0%,
+      rgba(5,55,101,.68) 48%,
+      rgba(2,27,52,.82) 100%
+    ),
+    var(--page-bg) !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  opacity:1 !important;
+  filter:saturate(.88) contrast(1.02) !important;
+}
+
+/* Контентные блоки становятся чуть плотнее, а природа просматривается между ними */
+body.secondary-bg .card,
+body.secondary-bg .list-card,
+body.secondary-bg .stat,
+body.secondary-bg .step,
+body.secondary-bg .table,
+body.secondary-bg .feature-list > div,
+body.secondary-bg .notice,
+body.secondary-bg .faq details,
+body.secondary-bg .verify-panel,
+body.secondary-bg .steps-panel,
+body.secondary-bg .org-banner,
+body.secondary-bg .direction{
+  background-color:rgba(4,36,68,.76) !important;
+  border-color:rgba(255,255,255,.15) !important;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+/* Максимальная читаемость белого текста */
+body.secondary-bg h1,
+body.secondary-bg h2,
+body.secondary-bg h3,
+body.secondary-bg h4,
+body.secondary-bg .brand,
+body.secondary-bg nav a{
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(0,0,0,.22);
+}
+body.secondary-bg .page-hero p,
+body.secondary-bg .section-lead,
+body.secondary-bg .card p,
+body.secondary-bg .list-card p,
+body.secondary-bg .faq p{
+  color:#e5eef6 !important;
+}
+
+/* Поля поиска и формы */
+body.secondary-bg .filterbar input,
+body.secondary-bg .filterbar select,
+body.secondary-bg .form-control{
+  background:rgba(3,32,62,.82) !important;
+  border-color:rgba(255,255,255,.20) !important;
+  color:#fff !important;
+}
+
+/* Адаптация логотипа */
+@media(max-width:700px){
+  .emblem,
+  .emblem .site-brand-logo,
+  .site-brand-logo{
+    width:43px;
+    height:43px;
+  }
+}
+

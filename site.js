@@ -33,3 +33,30 @@ document.addEventListener("DOMContentLoaded", () => {
     crumbs.insertAdjacentElement("beforebegin", back);
   }
 });
+
+
+// =========================================================
+// v14 VISUAL PATCH
+// Визуальные изменения без вмешательства в карту и данные.
+// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const path = (window.location.pathname || "").toLowerCase();
+  const file = path.split("/").pop();
+
+  // Убираем декоративные значки только на внутренних страницах.
+  // Главная index.html и корень сайта сохраняют свои существующие значки.
+  const isHome = file === "" || file === "index.html";
+  if (!isHome) document.body.classList.add("inner-page-clean");
+
+  // Меняем временный символ ✦ в шапках/подвалах на фирменный логотип.
+  document.querySelectorAll(".emblem").forEach((emblem) => {
+    if (emblem.querySelector("img")) return;
+    emblem.textContent = "";
+    const logo = document.createElement("img");
+    logo.src = "assets/logo/ozdorovitelnaya-logo.png";
+    logo.alt = "Оздоровительная карта России";
+    logo.className = "site-brand-logo";
+    emblem.appendChild(logo);
+  });
+});
+
