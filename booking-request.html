@@ -1,31 +1,33 @@
-<!doctype html><html lang="ru"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Заявка на размещение - Оздоровительная карта России</title>
-<meta name="description" content="Отправка запроса в санаторий или другой объект размещения. В MVP организация связывается с пользователем после получения заявки.">
-<link rel="stylesheet" href="site.css">
-</head><body class="secondary-bg" style="--page-bg:url('assets/backgrounds/bg-04-volga.jpg')"><div class="wrap"><header>
-  <a class="brand" href="index.html"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></a>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Заявка на бронирование - Оздоровительная карта России</title><link rel="stylesheet" href="site.css"><link rel="stylesheet" href="mvp-kbr.css"></head>
+<body class="secondary-bg" style="--page-bg:url('assets/backgrounds/bg-04-volga.jpg')"><div class="wrap">
+<header>
+  <a class="brand" href="index.html"><div class="emblem"><img class="mvp-logo" src="assets/logo/ozdorovitelnaya-logo.png" alt=""></div><div>Оздоровительная<br>карта России</div></a>
   <nav>
-    <a href="map.html">Карта</a>
-    <a href="regions.html">Регионы</a>
-    <a href="places.html">Места отдыха</a>
-    <a href="manufacturers.html">Товары</a>
-    <a href="practices.html">Практики</a>
-    <a href="about.html">О проекте</a>
+    <a href="map.html">Карта</a><a href="regions.html">Регионы</a><a href="places.html">Места отдыха</a>
+    <a href="manufacturers.html">Товары</a><a href="practices.html">Практики</a><a href="about.html">О проекте</a>
   </nav>
   <div class="actions"><a class="btn btn-login" href="login.html">Войти</a><a class="btn btn-join" href="participant.html">Стать участником</a></div>
 </header>
-<div class="breadcrumbs"><a href="index.html">Главная</a> / Заявка на размещение</div>
-<section class="page-hero"><span class="eyebrow">Оздоровительная карта России</span><h1>Заявка на размещение</h1><p>Отправка запроса в санаторий или другой объект размещения. В MVP организация связывается с пользователем после получения заявки.</p></section>
-
-<section class="section"><form id="bookingForm" class="card"><div class="form-grid"><div class="field"><label>Регион</label><input class="form-control" placeholder="Регион" data-region-autocomplete></div><div class="field"><label>Организация</label><input class="form-control" placeholder="Название"></div><div class="field"><label>Желаемые даты</label><input class="form-control" placeholder="Например, 10-17 октября"></div><div class="field"><label>Количество гостей</label><input class="form-control" type="number" min="1" value="1"></div><div class="field"><label>Имя</label><input class="form-control"></div><div class="field"><label>Телефон / e-mail</label><input class="form-control"></div><div class="field full"><label>Комментарий</label><textarea class="form-control"></textarea></div></div><button class="btn btn-primary" style="margin-top:16px">Отправить заявку</button></form></section>
-<section class="section"><div class="notice">MVP работает по модели заявки: пользователь отправляет запрос, после чего организация связывается с ним. Онлайн-оплата и полноценное бронирование подключаются позже.</div></section>
-
-<div class="footer">
-  <div class="footer-grid">
-    <div><a class="brand" href="index.html"><div class="emblem">✦</div><div>Оздоровительная<br>карта России</div></a><p>Единая цифровая система навигации по оздоровительным возможностям регионов России.</p></div>
-    <div><h4>Платформа</h4><a href="regions.html">Регионы</a><a href="places.html">Места отдыха</a><a href="manufacturers.html">Производители</a><a href="practices.html">Практики</a></div>
-    <div><h4>Участникам</h4><a href="participant.html">Стать участником</a><a href="verification.html">Верификация</a><a href="participant-account.html">Кабинет участника</a><a href="regional-operator.html">Региональным операторам</a></div>
-    <div><h4>Информация</h4><a href="about.html">О проекте</a><a href="integrations.html">Интеграции</a><a href="help.html">Помощь</a><a href="privacy.html">Персональные данные</a></div>
-  </div>
-</div></div><script src="site.js"></script><script>fakeSubmit("bookingForm","Заявка отправлена в демонстрационном режиме.");</script><script src="regions-autocomplete.js"></script></body></html>
+<div class="breadcrumbs"><a href="index.html">Главная</a> / Заявка на бронирование</div>
+<section class="page-hero"><span class="eyebrow">Бронирование</span><h1>Оставить заявку</h1><p>На первом этапе пользователь отправляет заявку, после чего организация связывается с ним напрямую.</p></section>
+<section class="section"><div class="mvp-detail-grid">
+<div class="mvp-panel"><div id="bookingSummary" class="mvp-form-summary"></div>
+<form id="bookingForm" class="form-grid">
+<div class="field full"><label>Место размещения</label><input class="form-control" id="bookingPlace" name="place" readonly></div>
+<div class="field"><label>Имя</label><input class="form-control" name="name" required></div>
+<div class="field"><label>Телефон</label><input class="form-control" name="phone" required></div>
+<div class="field"><label>Электронная почта</label><input class="form-control" type="электронная почта" name="электронная почта"></div>
+<div class="field"><label>Предпочтительные даты</label><input class="form-control" name="dates" placeholder="например, 10-20 октября"></div>
+<div class="field"><label>Количество гостей</label><select class="form-control" name="guests"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+<div class="field full"><label>Комментарий</label><textarea class="form-control" name="comment"></textarea></div>
+<div class="field full"><button class="btn btn-primary" type="submit">Отправить заявку</button></div>
+</form><div id="bookingDone" class="notice" style="display:none;margin-top:16px"></div></div>
+<div class="mvp-panel"><h3>Что происходит дальше</h3><div class="steps"><div class="step"><div class="num">1</div><div><b>Заявка принята</b><p class="mvp-note">Сохраняется в кабинете пользователя.</p></div></div><div class="step"><div class="num">2</div><div><b>Организация получает уведомление</b><p class="mvp-note">В реальном серверная часть - кабинет + электронная почта.</p></div></div><div class="step"><div class="num">3</div><div><b>Связь с пользователем</b><p class="mvp-note">Санаторий уточняет наличие, программу и стоимость.</p></div></div></div></div>
+</div></section>
+<div class="footer"><div class="footer-grid">
+<div><a class="brand" href="index.html"><div class="emblem"><img class="mvp-logo" src="assets/logo/ozdorovitelnaya-logo.png" alt=""></div><div>Оздоровительная<br>карта России</div></a><p>Единая цифровая система навигации по оздоровительным возможностям регионов России.</p></div>
+<div><h4>Платформа</h4><a href="regions.html">Регионы</a><a href="places.html">Места отдыха</a><a href="manufacturers.html">Производители</a><a href="practices.html">Практики</a></div>
+<div><h4>Участникам</h4><a href="participant.html">Стать участником</a><a href="verification.html">Верификация</a><a href="participant-account.html">Кабинет участника</a><a href="regional-operator.html">Региональным операторам</a></div>
+<div><h4>Информация</h4><a href="about.html">О проекте</a><a href="integrations.html">Интеграции</a><a href="help.html">Помощь</a><a href="privacy.html">Персональные данные</a></div>
+</div></div></div><script src="site.js"></script><script src="mvp-kbr.js"></script></body></html>

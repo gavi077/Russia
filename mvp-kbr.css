@@ -1,0 +1,80 @@
+
+/* v16 - KBR vertical MVP extension. Load after site.css */
+.mvp-shell{display:grid;gap:18px}
+.mvp-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.mvp-panel{background:rgba(4,36,68,.76);border:1px solid rgba(255,255,255,.13);border-radius:20px;padding:22px;backdrop-filter:blur(8px)}
+.mvp-panel h3{margin:0 0 10px}
+.mvp-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mvp-kpi{padding:16px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}
+.mvp-kpi b{display:block;font-size:24px;margin-bottom:4px}
+.mvp-kpi span{font-size:12px;color:#b9cde0}
+.mvp-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mvp-category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mvp-category{display:flex;flex-direction:column;min-height:220px}
+.mvp-category .count{font-family:Georgia,serif;font-size:36px;margin:12px 0 8px}
+.mvp-category .spacer{flex:1}
+.mvp-note{font-size:12px;color:#a9bfd3;line-height:1.55}
+.mvp-object-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mvp-object-card{background:rgba(4,36,68,.76);border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.mvp-object-cover{height:160px;background:linear-gradient(145deg,rgba(34,111,177,.35),rgba(3,31,60,.9)),url('assets/backgrounds/bg-01-kavkaz.jpg') center/cover no-repeat}
+.mvp-object-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.mvp-object-body h3{margin:0;font-size:19px}
+.mvp-meta{display:flex;gap:7px;flex-wrap:wrap}
+.mvp-chip{font-size:11px;padding:6px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05)}
+.mvp-card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.mvp-small-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 12px;border-radius:10px;text-decoration:none;font-size:12px;font-weight:800}
+.mvp-small-primary{background:#ed2f30;color:#fff}
+.mvp-small-secondary{border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.04)}
+.mvp-gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+.mvp-gallery div{min-height:210px;border-radius:16px;background:linear-gradient(145deg,rgba(34,111,177,.25),rgba(3,31,60,.55)),url('assets/backgrounds/bg-01-kavkaz.jpg') center/cover no-repeat;position:relative;overflow:hidden}
+.mvp-gallery div:after{content:"Фотография участника";position:absolute;left:10px;bottom:10px;padding:6px 8px;border-radius:8px;background:rgba(2,24,47,.72);font-size:11px}
+.mvp-detail-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+.mvp-table{width:100%;border-collapse:collapse}
+.mvp-table th,.mvp-table td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;vertical-align:top}
+.mvp-table th{width:34%;font-size:12px;color:#9fc5e4}
+.mvp-table td{font-size:13px;color:#e5eef6}
+.mvp-filter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 20px}
+.mvp-filter-grid select,.mvp-filter-grid input{height:46px;border-radius:11px;border:1px solid rgba(255,255,255,.15);background:rgba(4,36,68,.82);color:#fff;padding:0 12px}
+.mvp-empty{padding:16px;border:1px dashed rgba(255,255,255,.17);border-radius:14px;color:#b9cde0;font-size:13px}
+.mvp-status-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.mvp-status-step{padding:12px;border-radius:12px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);font-size:11px;text-align:center}
+.mvp-status-step.active{background:rgba(47,166,126,.16);border-color:rgba(74,191,151,.25)}
+.mvp-link-row{display:flex;gap:10px;flex-wrap:wrap}
+.mvp-source{font-size:11px;color:#9fb9cf;line-height:1.5}
+.mvp-form-summary{padding:14px;border-radius:12px;background:rgba(255,255,255,.045);margin-bottom:16px}
+.mvp-booking-list{display:grid;gap:10px}
+.mvp-booking{padding:14px;border-radius:13px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}
+.mvp-booking b{display:block;margin-bottom:5px}
+.mvp-section-title{display:flex;justify-content:space-between;align-items:end;gap:20px}
+.mvp-muted{color:#b9cde0}
+.mvp-logo{width:50px;height:50px;object-fit:contain;display:block}
+@media(max-width:980px){
+  .mvp-hero-grid,.mvp-detail-grid{grid-template-columns:1fr}
+  .mvp-kpis,.mvp-facts,.mvp-category-grid,.mvp-object-grid{grid-template-columns:1fr 1fr}
+  .mvp-filter-grid{grid-template-columns:1fr 1fr}
+  .mvp-status-flow{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:700px){
+  .mvp-kpis,.mvp-facts,.mvp-category-grid,.mvp-object-grid,.mvp-filter-grid,.mvp-status-flow{grid-template-columns:1fr}
+  .mvp-gallery{grid-template-columns:1fr}
+  .mvp-gallery div{min-height:180px}
+}
+
+
+/* v17: универсальные карточки производителей и практик */
+.catalog-hero-note{
+  padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);color:#c9dbea;font-size:12px;line-height:1.5
+}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.product-card{display:flex;flex-direction:column;background:rgba(4,36,68,.76);border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden}
+.product-cover{height:170px;background:linear-gradient(145deg,rgba(19,93,154,.28),rgba(3,31,60,.74)),url('assets/backgrounds/bg-05-russian-fields.jpg') center/cover no-repeat}
+.product-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.product-body h3{margin:0}.product-body .mvp-card-actions{margin-top:auto}
+.practice-cover{background:linear-gradient(145deg,rgba(19,93,154,.28),rgba(3,31,60,.74)),url('assets/backgrounds/bg-03-baykal.jpg') center/cover no-repeat}
+.verification-state{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;font-size:11px;border:1px solid rgba(255,255,255,.12)}
+.verification-state.pending{background:rgba(210,159,58,.14);color:#ffe3a6}
+.verification-state.public{background:rgba(70,154,211,.14);color:#cfeaff}
+.source-list{display:grid;gap:8px}.source-list a{color:#fff}
+@media(max-width:900px){.product-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.product-grid{grid-template-columns:1fr}}
