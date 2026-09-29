@@ -5,6 +5,7 @@
   const dropdown = document.getElementById('regionDropdown');
   const picker = document.getElementById('regionPicker');
   const objectList = document.getElementById('objectList');
+  const regionObjectSummary = document.getElementById('regionObjectSummary');
   const key = (window.YANDEX_MAPS_API_KEY || '').trim();
 
   if (!key || key === 'PASTE_YANDEX_MAPS_API_KEY_HERE') {
@@ -169,11 +170,17 @@
 
     function showCard(o) {
       const card = document.getElementById('mapCard');
+      const photo = o.image ? `<img class="map-card-photo" src="${o.image}" alt="${o.name || 'Объект'}" loading="lazy" onerror="this.style.display='none'">` : '';
+      const address = o.address ? `<div class="map-card-address">${o.address}</div>` : '';
+      const details = o.url ? `<a href="${o.url}">Подробнее</a>` : '';
+      const official = o.officialUrl ? `<a href="${o.officialUrl}" target="_blank" rel="noopener">Официальный сайт</a>` : '';
       card.innerHTML = `<div class="map-card-close" id="mapCardClose">×</div>
+        ${photo}
         <div class="map-card-type">${o.type || 'Объект'}</div>
         <h3>${o.name || ''}</h3>
         <p>${o.description || 'Информация об объекте будет добавлена в региональную базу.'}</p>
-        ${o.url ? `<a href="${o.url}">Подробнее →</a>` : ''}`;
+        ${address}
+        <div class="map-card-actions">${details}${official}</div>`;
       card.classList.add('show');
       document.getElementById('mapCardClose').onclick = () => card.classList.remove('show');
     }
@@ -183,8 +190,21 @@
       markerStore.clear();
     }
 
+    function renderRegionSummary() {
+      if (!regionObjectSummary) return;
+      if (!selectedRegion) {
+        regionObjectSummary.textContent = 'Выберите регион, чтобы увидеть количество объектов по категориям.';
+        return;
+      }
+      const regionObjects = objects.filter(o => o.region === selectedRegion);
+      const counts = {accommodation:0, manufacturers:0, practices:0, resorts:0};
+      regionObjects.forEach(o => { if (counts[o.category] !== undefined) counts[o.category] += 1; });
+      regionObjectSummary.innerHTML = `<b>${selectedRegion}</b><br>${counts.accommodation} места размещения · ${counts.manufacturers} производитель · ${counts.practices} практика/центр${counts.resorts ? ` · ${counts.resorts} курортные зоны` : ''}`;
+    }
+
     function renderObjects() {
       objectList.innerHTML = '';
+      renderRegionSummary();
 
       if (!selectedRegion) {
         objectList.innerHTML = `<div class="empty-objects">Сначала выберите регион. После этого здесь появятся доступные места отдыха, курортные зоны, практики и производители этого региона.</div>`;

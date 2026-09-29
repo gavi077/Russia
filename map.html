@@ -43,7 +43,7 @@
 .region-option:hover,.region-option.active{background:rgba(39,127,199,.34)}
 .region-picker-hint{font-size:11px;color:#a9bfd3;line-height:1.45;margin:8px 2px 0}
 .map-status{
-  margin:12px 0 16px;padding:10px 12px;border-radius:10px;
+  margin:12px 0 10px;padding:10px 12px;border-radius:10px;
   background:rgba(46,142,205,.12);font-size:11px;color:#d7ebfa;line-height:1.45
 }
 .layer-help{font-size:11px;color:#a9bfd3;line-height:1.45;margin:-4px 0 10px}
@@ -100,6 +100,15 @@
   width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
   border:1px solid rgba(255,255,255,.4);font-size:30px;margin-bottom:14px
 }
+
+.region-object-summary{margin:0 0 16px;padding:11px 12px;border-radius:10px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);font-size:11px;color:#d7ebfa;line-height:1.55}
+.region-object-summary b{color:#fff}
+.map-card-photo{width:100%;height:145px;object-fit:cover;border-radius:11px;margin:0 0 12px;display:block;background:#0b3158}
+.map-card-address{font-size:11px;color:#9fb9cf;margin:8px 0 10px}
+.map-card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.map-card-actions a{display:inline-flex;padding:8px 10px;border-radius:9px;text-decoration:none;border:1px solid rgba(255,255,255,.16);font-size:11px}
+.map-card-actions a:first-child{background:#0b4f8a}
+
 @media(max-width:980px){.map-layout{grid-template-columns:1fr}#yandexMap{height:590px}.map-sidebar{min-height:auto}}
 @media(max-width:600px){#yandexMap{height:500px}.region-dropdown{max-height:260px}}
 </style>
@@ -122,6 +131,7 @@
 </div>
 
 <div id="mapStatus" class="map-status">Подготовка карты...</div>
+<div id="regionObjectSummary" class="region-object-summary">Выберите регион, чтобы увидеть количество объектов по категориям.</div>
 
 <h3>Что показать в регионе</h3>
 <div class="layer-help">Категории ниже фильтруют объекты выбранного региона. Если данные по категории ещё не загружены, карта просто не показывает лишние точки.</div>
@@ -142,5 +152,6 @@
 <script src="site.js"></script>
 <script src="regions-autocomplete.js"></script>
 <script src="yandex-config.js"></script>
+<script src="health-map-objects.js"></script>
 <script src="map-yandex.js"></script>
 </body></html>
