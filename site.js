@@ -160,3 +160,38 @@ function ozRenderVerification(){
 }
 function ozMarkNotificationsRead(){const btn=document.querySelector('[data-mark-read]');if(!btn)return;btn.onclick=()=>{const arr=OZ_STORE.get('notifications',[]);arr.forEach(x=>x.read=true);OZ_STORE.set('notifications',arr);ozRenderUserAccount();ozRenderParticipantAccount();};}
 document.addEventListener('DOMContentLoaded',()=>{ozSeed();ozInitTabs();ozRenderUserAccount();ozRenderParticipantAccount();ozRenderAdmin();ozBindBooking();ozBindParticipantJoin();ozRenderVerification();ozMarkNotificationsRead();});
+
+// =========================================================
+// СОГЛАСОВАННАЯ НАВИГАЦИЯ К ДОБАВЛЕННЫМ РАЗДЕЛАМ
+// Главная и обе карты не изменяются.
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const file = ((window.location.pathname || '').split('/').pop() || '').toLowerCase();
+  if (!file || file === 'index.html' || file === 'map.html') return;
+  if (document.querySelector('.oz-service-nav')) return;
+
+  const header = document.querySelector('header');
+  if (!header) return;
+
+  const nav = document.createElement('div');
+  nav.className = 'oz-service-nav';
+  nav.setAttribute('aria-label', 'Сервисы платформы');
+  nav.innerHTML = `
+    <a href="user-account.html">Личный кабинет</a>
+    <a href="participant-account.html">Кабинет участника</a>
+    <a href="verification.html">Верификация</a>
+    <a href="integrations.html">Интеграции</a>
+  `;
+
+  header.insertAdjacentElement('afterend', nav);
+
+  // Административная часть не выводится в общем меню.
+  // Ссылка видна только из кабинета участника и самой админки.
+  if (file === 'participant-account.html' || file === 'admin-demo.html') {
+    const admin = document.createElement('a');
+    admin.href = 'admin-demo.html';
+    admin.className = 'oz-admin-entry';
+    admin.textContent = 'Административная часть';
+    nav.appendChild(admin);
+  }
+});

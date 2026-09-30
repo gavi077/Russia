@@ -289,3 +289,42 @@ body.secondary-bg .form-control{
   .footer{padding-bottom:35px}.form-control{font-size:16px}
 }
 @media(max-width:430px){.wrap{padding:0 14px}.account-summary{grid-template-columns:1fr}.page-hero h1{font-size:32px}.brand{max-width:190px}.actions .btn-join{padding:0 12px}.hero-actions .btn{width:100%}}
+
+/* =========================================================
+   СОГЛАСОВАННАЯ НАВИГАЦИЯ К НОВЫМ РАЗДЕЛАМ
+   Не используется на index.html и map.html.
+   ========================================================= */
+.oz-service-nav{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin:2px 0 4px;
+  padding:9px 0 13px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.oz-service-nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:36px;
+  padding:0 13px;
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  background:rgba(5,43,80,.62);
+  border:1px solid rgba(255,255,255,.13);
+}
+.oz-service-nav a:hover{background:rgba(20,86,145,.82)}
+.oz-service-nav .oz-admin-entry{
+  margin-left:auto;
+  opacity:.68;
+  font-weight:600;
+  background:transparent;
+}
+@media(max-width:700px){
+  .oz-service-nav{gap:7px;padding-bottom:10px}
+  .oz-service-nav a{font-size:11px;min-height:34px;padding:0 10px}
+  .oz-service-nav .oz-admin-entry{margin-left:0}
+}
